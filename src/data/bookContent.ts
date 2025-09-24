@@ -450,42 +450,143 @@ Durante esta etapa, você perceberá que a resistência inicial começará a dim
     {
       id: "stage4",
       title: "Etapa 4: Reforço Positivo",
-      subtitle: "Celebrando cada conquista",
-      content: `Celebrar as conquistas, reforçar comportamentos positivos e manter um diálogo aberto para ajustar o processo conforme necessário.`,
+      subtitle: "Consolidando mudanças duradouras",
+      content: `Esta é a etapa que determina o sucesso a longo prazo de todo o processo. O reforço positivo não é apenas "dar parabéns" - é uma ciência comportamental que fortalece neurônios, cria novas conexões cerebrais e solidifica hábitos saudáveis.
+
+Chegamos ao momento mais delicado e importante: consolidar as mudanças conquistadas e transformá-las em um estilo de vida familiar permanente. Muitos pais cometem o erro de relaxar nesta etapa, achando que o "trabalho difícil" já passou. Na verdade, é aqui que definimos se as transformações serão temporárias ou duradouras.
+
+O cérebro adolescente está em constante desenvolvimento, especialmente nas áreas responsáveis pelo autocontrole e tomada de decisões. Por isso, o reforço positivo consistente é fundamental para que os novos padrões se tornem automáticos e naturais. Quando celebramos conquistas de forma adequada, ativamos os circuitos de recompensa do cérebro, fortalecendo os comportamentos desejados.`,
       sections: [
         {
-          id: "celebrate",
-          title: "Como Celebrar Conquistas",
+          id: "psychology-reinforcement",
+          title: "A Neurociência do Reforço Positivo",
           type: "tips",
-          content: "",
+          content: "Entenda como funciona o cérebro e maximize seus resultados:",
           items: [
-            "Reconheça cada pequeno progresso",
-            "Use recompensas significativas (não digitais)",
-            "Elogie comportamentos específicos",
-            "Crie certificados de conquista",
-            "Organize celebrações especiais"
+            "🧠 Dopamina natural: Elogios específicos liberam dopamina, o mesmo neurotransmissor dos jogos, mas de forma saudável",
+            "⚡ Timing perfeito: Reconheça conquistas imediatamente - o cérebro conecta causa e efeito em até 3 segundos",
+            "🔄 Repetição consciente: São necessárias 21-66 repetições para criar um novo caminho neural permanente",
+            "🎯 Especificidade: 'Você guardou o celular no horário combinado' é mais eficaz que 'você foi obediente'",
+            "📈 Progressão gradual: Celebre pequenos avanços - o cérebro aprende por aproximações sucessivas",
+            "💪 Reforço intermitente: Não precisa elogiar sempre - o reforço ocasional é mais duradouro",
+            "🏆 Valor pessoal: Recompensas que conectam com valores pessoais da criança têm impacto 300% maior"
           ]
         },
         {
-          id: "rewards",
-          title: "Sistema de Pontos",
-          type: "exercise",
-          content: `• Reduzir 30 minutos: 1 ponto
-• Atividade offline: 2 pontos
-• Sem celular nas refeições: 1 ponto/dia
-• 10 pontos = Atividade especial em família`
+          id: "age-specific-rewards",
+          title: "Estratégias de Recompensa por Faixa Etária",
+          type: "tips",
+          content: "Adapte as celebrações para máxima efetividade:",
+          items: [
+            "🧒 6-9 anos: Adesivos colecionáveis, quadro de conquistas colorido, escolher o filme da família, ficar acordado 30 min a mais no fim de semana",
+            "🧑 10-13 anos: Dinheiro para comprar algo especial, escolher restaurante do almoço de domingo, convidar amigo para dormir em casa, dia sem tarefas domésticas",
+            "👤 14-17 anos: Maior liberdade (sair até mais tarde), dinheiro para atividades sociais, não precisar avisar localização por um dia, escolher atividade familiar do mês",
+            "👨‍👩‍👧‍👦 Família toda: Passeio especial, noite de jogos, jantar diferente, acampamento na sala, dia sem regras rígidas",
+            "⚠️ Evite: Dar celular/tela como recompensa - contradiz todo o processo e confunde o cérebro"
+          ]
         },
         {
-          id: "dialogue",
-          title: "Mantendo o Diálogo",
+          id: "creative-celebrations",
+          title: "Celebrações Criativas e Econômicas",
           type: "tips",
-          content: "Perguntas para check-ins semanais:",
+          content: "Ideias poderosas que não custam caro:",
           items: [
-            "Como você está se sentindo com as mudanças?",
-            "O que tem sido mais difícil?",
-            "Do que você mais gostou essa semana?",
-            "Como podemos melhorar juntos?",
-            "Que atividade nova podemos tentar?"
+            "🏆 Certificados personalizados: Crie diplomas de 'Mestre do Autocontrole', 'Especialista em Equilíbrio Digital'",
+            "📸 Mural de conquistas: Fotos dos momentos felizes sem telas, frases motivacionais escritas pela criança",
+            "🎪 Teatro familiar: Encenem a 'transformação da família' - muito divertido e memorável",
+            "🍰 Chef por um dia: Criança escolhe e ajuda a preparar refeição especial da família",
+            "🎨 Projeto criativo conjunto: Pintar um cômodo, fazer horta, construir algo juntos",
+            "📚 Noite de histórias especial: Criança conta história inventada para toda família",
+            "🏃‍♂️ Atividade aventura: Trilha, piquenique, explorar lugar novo na cidade"
+          ]
+        },
+        {
+          id: "achievement-system",
+          title: "Sistema de Conquistas Gamificado",
+          type: "exercise",
+          content: "Transforme o progresso em jogo da vida real:",
+          items: [
+            "🏅 Nível Iniciante (1ª semana): 'Descobridor do Equilíbrio' - Seguir regras por 3 dias consecutivos",
+            "🥉 Nível Bronze (2ª semana): 'Guardião do Tempo' - Uma semana completa seguindo horários",
+            "🥈 Nível Prata (3ª semana): 'Mestre da Substituição' - Propor e fazer 5 atividades diferentes",
+            "🥇 Nível Ouro (1º mês): 'Embaixador Digital' - Ajudar outra pessoa da família com o equilíbrio",
+            "💎 Nível Diamante (2º mês): 'Especialista em Bem-estar' - Manter mudanças sem lembretes",
+            "👑 Nível Lenda (3º mês): 'Influenciador Positivo' - Inspirar amigos a fazer mudanças similares"
+          ]
+        },
+        {
+          id: "handling-setbacks",
+          title: "Gestão Inteligente de Recaídas",
+          type: "tips",
+          content: "Transforme retrocessos em oportunidades de crescimento:",
+          items: [
+            "🔄 Normalize recaídas: 'Isso faz parte do processo. Até atletas têm dias ruins. O que importa é voltar'",
+            "🔍 Analise sem julgar: 'Vamos entender o que aconteceu. Você estava estressado? Entediado? Sozinho?'",
+            "🎯 Foque na solução: 'Que estratégia podemos criar para situações parecidas no futuro?'",
+            "💪 Reforce identidade: 'Você É alguém que tem autocontrole. Este foi só um momento diferente'",
+            "⚡ Ação rápida: Não deixe uma recaída virar várias - volte às regras no mesmo dia",
+            "🎉 Celebre o recomeço: 'Estou orgulhoso(a) por você reconhecer e querer voltar ao caminho'",
+            "📝 Documente aprendizados: Cada recaída ensina algo sobre gatilhos e estratégias de prevenção"
+          ]
+        },
+        {
+          id: "rule-evolution",
+          title: "Evolução Inteligente das Regras",
+          type: "tips",
+          content: "Como ajustar o método conforme o crescimento:",
+          items: [
+            "📊 Avaliação mensal: 'Como está funcionando? O que podemos melhorar? Você sente que cresceu?'",
+            "🎯 Mais responsabilidade: Criança que mostra autocontrole ganha mais autonomia gradualmente",
+            "🔄 Regras colaborativas: 'Agora que você entende o processo, que regras você sugere?'",
+            "⚖️ Flexibilidade inteligente: Situações especiais (viagens, provas) podem ter regras temporárias diferentes",
+            "📈 Foco na evolução: 'Como você era há 3 meses? Você percebe sua própria transformação?'",
+            "🎓 Preparação para independência: 'Quando você completar 18 anos, que relação quer ter com a tecnologia?'",
+            "💬 Check-ins regulares: Conversas mensais sobre ajustes necessários e novos desafios"
+          ]
+        },
+        {
+          id: "communication-techniques",
+          title: "Técnicas de Comunicação Efetiva",
+          type: "tips",
+          content: "Scripts e abordagens que realmente funcionam:",
+          items: [
+            "🎯 Elogios específicos: 'Quando você guardou o celular e veio jantar conosco, nossa conversa ficou muito mais legal'",
+            "💭 Validação emocional: 'Sei que às vezes é difícil parar o jogo no meio. Como podemos tornar isso mais fácil?'",
+            "🚀 Foco no crescimento: 'Você está ficando muito bom em perceber quando precisa de uma pausa das telas'",
+            "🔮 Conexão com futuro: 'Essas habilidades de autocontrole vão te ajudar muito nos estudos e trabalho'",
+            "❤️ Expressão de sentimentos: 'Fico muito feliz quando vejo você brincando e rindo sem precisar de tela'",
+            "🤝 Parceria: 'Somos uma equipe. Quando um de nós melhora, toda a família melhora'",
+            "🚫 Evite sempre: Comparações com outros filhos, chantagem emocional, ameaças de punição"
+          ]
+        },
+        {
+          id: "third-party-involvement",
+          title: "Engajamento do Círculo Social",
+          type: "tips",
+          content: "Como envolver escola, familiares e amigos no processo:",
+          items: [
+            "🏫 Comunicação com escola: Informe professores sobre o processo para reforçarem comportamentos positivos",
+            "👴👵 Alinhamento com avós: Explique as regras para familiares manterem consistência durante visitas",
+            "👫 Influência de amigos: Incentive criança a compartilhar conquistas e inspirar colegas",
+            "📱 Grupo de pais: Crie rede de apoio com outros pais passando pelo mesmo processo",
+            "🎉 Celebrações públicas: Permita que criança conte suas conquistas para pessoas importantes",
+            "🏆 Reconhecimento externo: Professores e familiares podem dar feedback positivo específico",
+            "🌟 Modelo para outros: Criança se torna exemplo positivo, reforçando sua própria identidade transformada"
+          ]
+        },
+        {
+          id: "long-term-maintenance",
+          title: "Manutenção a Longo Prazo",
+          type: "tips",
+          content: "Estratégias para transformar mudanças em estilo de vida:",
+          items: [
+            "🔄 Revisões trimestrais: Avaliem juntos o que está funcionando e o que precisa ser ajustado",
+            "📈 Evolução natural: Permita que as regras evoluam conforme a maturidade da criança",
+            "🎯 Novos desafios: Introduza metas progressivamente mais sofisticadas",
+            "💪 Autonomia crescente: Transfira gradualmente a responsabilidade para a própria criança",
+            "🏆 Conquistas maiores: Celebre marcos importantes (3 meses, 6 meses, 1 ano de equilíbrio)",
+            "👨‍👩‍👧‍👦 Cultura familiar: Transforme o equilíbrio digital em valor fundamental da família",
+            "🌱 Crescimento contínuo: Veja o processo como jardim que precisa de cuidado constante, não como projeto com fim"
           ]
         }
       ]
