@@ -34,4 +34,5 @@ export interface BonusBook {
   title: string;
   description: string;
   icon: string;
+  pdfUrl?: string;
 }

@@ -48,7 +48,20 @@ const BonusBook: React.FC = () => {
             <BookOpen className="h-4 w-4 mr-2" />
             Ler Agora
           </Button>
-          <Button variant="outline" className="hover:bg-secondary/10 hover:border-secondary">
+          <Button 
+            variant="outline" 
+            className="hover:bg-secondary/10 hover:border-secondary"
+            onClick={() => {
+              if (book.pdfUrl) {
+                const link = document.createElement('a');
+                link.href = book.pdfUrl;
+                link.download = `${book.title}.pdf`;
+                link.click();
+              }
+            }}
+            disabled={!book.pdfUrl}
+            data-testid="button-download-pdf"
+          >
             <Download className="h-4 w-4 mr-2" />
             Baixar PDF
           </Button>
