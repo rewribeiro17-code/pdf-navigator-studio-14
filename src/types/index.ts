@@ -2,6 +2,7 @@ export interface User {
   id: string;
   email: string;
   name: string;
+  isPremium: boolean;
 }
 
 export interface Chapter {
@@ -35,4 +36,38 @@ export interface BonusBook {
   description: string;
   icon: string;
   pdfUrl?: string;
+}
+
+export interface FamilyMember {
+  id: string;
+  name: string;
+  age: number;
+  dailyLimit: number; // minutes
+  currentUsage: number; // minutes today
+  avatar?: string;
+}
+
+export interface ScreenTimeData {
+  date: string;
+  usage: number; // minutes
+  apps: { name: string; usage: number }[];
+}
+
+export interface Activity {
+  id: string;
+  title: string;
+  description: string;
+  duration: number; // minutes
+  category: 'physical' | 'creative' | 'educational' | 'social' | 'family';
+  ageRange: [number, number];
+  icon: string;
+}
+
+export interface WeeklyPlan {
+  memberId: string;
+  activities: {
+    day: string;
+    activity: Activity;
+    completed: boolean;
+  }[];
 }

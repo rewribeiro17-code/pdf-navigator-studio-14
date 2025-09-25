@@ -39,10 +39,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     // For demo purposes, any email/password combo works
+    // Users with "premium" in email get premium access for testing
+    const isPremium = email.toLowerCase().includes('premium');
+    
     const mockUser: User = {
       id: '1',
       email,
       name: email.split('@')[0],
+      isPremium,
     };
     
     setUser(mockUser);
