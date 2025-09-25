@@ -24,7 +24,8 @@ import {
   BookOpen,
   Activity,
   MessageSquare,
-  Sparkles
+  Sparkles,
+  Crown
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -149,6 +150,27 @@ const AppSidebar: React.FC = () => {
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild>
+                <NavLink 
+                  to={user?.isPremium ? "/premium" : "/premium/upsell"}
+                  className={cn(
+                    "flex items-center gap-3 rounded-lg px-3 py-2 transition-all",
+                    "bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-semibold",
+                    "hover:from-yellow-500 hover:to-yellow-700 shadow-lg",
+                    "border-2 border-yellow-300"
+                  )}
+                >
+                  <Crown className="h-4 w-4" />
+                  <span>✨ PREMIUM ⭐</span>
+                </NavLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
           </SidebarGroupContent>
         </SidebarGroup>
 

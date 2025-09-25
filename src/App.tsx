@@ -11,6 +11,10 @@ import Dashboard from "./pages/Dashboard";
 import ChapterPage from "./pages/ChapterPage";
 import BonusBook from "./pages/BonusBook";
 import NotFound from "./pages/NotFound";
+import PremiumUpsell from "./pages/premium/PremiumUpsell";
+import PremiumDashboard from "./pages/premium/PremiumDashboard";
+import ScreenTimeMonitor from "./pages/premium/ScreenTimeMonitor";
+import ActivityPlanner from "./pages/premium/ActivityPlanner";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +36,22 @@ const App = () => (
               <Route index element={<Dashboard />} />
               <Route path=":chapterId" element={<ChapterPage />} />
               <Route path="bonus/:bookId" element={<BonusBook />} />
+            </Route>
+            <Route path="/premium" element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }>
+              <Route index element={<PremiumDashboard />} />
+              <Route path="screen-time" element={<ScreenTimeMonitor />} />
+              <Route path="activity-planner" element={<ActivityPlanner />} />
+            </Route>
+            <Route path="/premium/upsell" element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }>
+              <Route index element={<PremiumUpsell />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
