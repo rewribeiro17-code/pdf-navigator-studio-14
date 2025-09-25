@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, Plus, Trophy, Calendar, Clock, Edit3, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import useScreenTimeStorage from '@/hooks/useScreenTimeStorage';
+import { useScreenTimeStorage } from '@/hooks/useScreenTimeStorage';
 import useActivityStorage from '@/hooks/useActivityStorage';
 import AddActivityDialog from '@/components/premium/AddActivityDialog';
 import WeeklyPlanDialog from '@/components/premium/WeeklyPlanDialog';
@@ -54,6 +54,16 @@ const ActivityPlanner: React.FC = () => {
     activityStorage.toggleActivityCompletion(selectedMember.id, day, activityId);
   };
 
+  // Utility functions
+  const formatDuration = (minutes: number) => {
+    if (minutes >= 60) {
+      const hours = Math.floor(minutes / 60);
+      const mins = minutes % 60;
+      return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
+    }
+    return `${minutes}m`;
+  };
+
   // Generate suggestions based on age
   const suggestions = selectedMember ? activityStorage.getDefaultActivities(selectedMember.age).slice(0, 3).map(activity => ({
     title: activity.title,
@@ -81,14 +91,6 @@ const ActivityPlanner: React.FC = () => {
     }] : [])
   ];
 
-  const formatDuration = (minutes: number) => {
-    if (minutes >= 60) {
-      const hours = Math.floor(minutes / 60);
-      const mins = minutes % 60;
-      return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
-    }
-    return `${minutes}m`;
-  };
 
   // Get current week date range for display
   const currentDate = new Date();
