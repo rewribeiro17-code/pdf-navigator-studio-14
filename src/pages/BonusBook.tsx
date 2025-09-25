@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Download, BookOpen } from 'lucide-react';
+import { ArrowLeft, Download } from 'lucide-react';
 import { bookContent } from '@/data/bookContent';
 
 const BonusBook: React.FC = () => {
@@ -43,11 +43,7 @@ const BonusBook: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex justify-center gap-4">
-          <Button className="bg-gradient-to-r from-secondary to-secondary/80 hover:opacity-90">
-            <BookOpen className="h-4 w-4 mr-2" />
-            Ler Agora
-          </Button>
+        <div className="flex justify-center">
           <Button 
             variant="outline" 
             className="hover:bg-secondary/10 hover:border-secondary"
