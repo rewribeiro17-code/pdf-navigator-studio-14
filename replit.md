@@ -17,7 +17,9 @@ This is a React application built with Vite that provides a digital detox guide 
 - Protected routes for authenticated users
 - Responsive design with mobile-first approach
 - Chapter-based content navigation
-- Bonus book sections
+- Bonus book sections with PDF downloads
+- **Premium Features**: Screen Time Monitor and Activity Planner
+- **Smart Upsell System**: Different experiences for free vs premium users
 - Beautiful UI with custom color palette (teal primary, coral secondary, purple accent)
 - Dark mode support (configured but not implemented)
 
@@ -32,23 +34,35 @@ This is a React application built with Vite that provides a digital detox guide 
 src/
 ├── components/          # Reusable UI components
 │   └── ui/             # shadcn/ui component library
-├── contexts/           # React Context providers
+├── contexts/           # React Context providers (AuthContext with isPremium)
 ├── data/              # Static data and content
 ├── hooks/             # Custom React hooks
 ├── layouts/           # Layout components
 ├── pages/             # Route components
-├── types/             # TypeScript type definitions
+│   └── premium/       # Premium-only pages
+├── types/             # TypeScript type definitions (including premium types)
 └── lib/               # Utility functions
 ```
 
 ## Content Structure
-- Login page with mock authentication
+- Login page with mock authentication (users with "premium" in email get premium access)
 - Dashboard for navigation
 - Chapter-based content system
-- Bonus books feature
+- Bonus books feature with PDF downloads
+- **Premium Dashboard**: Access to exclusive tools
+- **Screen Time Monitor**: Real-time family device usage tracking
+- **Activity Planner**: Weekly offline activities scheduler
+- **Smart Premium Button**: Shows upsell for free users, dashboard for premium users
 - Protected routes requiring authentication
 
-## Recent Changes
+## Recent Changes (Sep 25, 2025)
+- **Premium System Implementation**: Complete freemium model with tiered access
+- **AuthContext Enhanced**: Added isPremium property to User interface
+- **Premium Pages**: PremiumUpsell, PremiumDashboard, ScreenTimeMonitor, ActivityPlanner
+- **Smart Navigation**: Golden premium button that adapts to user type
+- **PDF Downloads**: Real PDFs integrated in bonus section
+- **Pricing Strategy**: R$ 14,90/month with external checkout preparation
+- **Premium Types**: FamilyMember, ScreenTimeData, Activity, WeeklyPlan interfaces
 - Updated Vite configuration for Replit environment (port 5000, host 0.0.0.0)
 - Added production start script using vite preview
 - Configured deployment settings for autoscale deployment
