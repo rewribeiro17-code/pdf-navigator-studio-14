@@ -161,7 +161,7 @@ const UsageEntryDialog: React.FC<UsageEntryDialogProps> = ({
             {apps.map((app, index) => (
               <div key={index} className="flex gap-2 items-center">
                 <Input
-                  placeholder="Nome do app"
+                  placeholder="Ex.: TikTok, YouTube..."
                   value={app.name}
                   onChange={(e) => updateApp(index, 'name', e.target.value)}
                   className="flex-1"
