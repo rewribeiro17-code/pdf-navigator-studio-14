@@ -55,7 +55,7 @@ const WeeklyPlanDialog: React.FC<WeeklyPlanDialogProps> = ({
     if (!member) return;
 
     const planActivities = Object.entries(selectedActivities)
-      .filter(([_, activityId]) => activityId)
+      .filter(([_, activityId]) => activityId && activityId !== 'none')
       .map(([day, activityId]) => ({ day, activityId }));
 
     if (planActivities.length === 0) {
@@ -79,7 +79,7 @@ const WeeklyPlanDialog: React.FC<WeeklyPlanDialogProps> = ({
   const handleActivityChange = (day: string, activityId: string) => {
     setSelectedActivities(prev => ({
       ...prev,
-      [day]: activityId
+      [day]: activityId === 'none' ? '' : activityId
     }));
   };
 
@@ -128,7 +128,7 @@ const WeeklyPlanDialog: React.FC<WeeklyPlanDialogProps> = ({
                         <SelectValue placeholder="Selecione uma atividade..." />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">Nenhuma atividade</SelectItem>
+                        <SelectItem value="none">Nenhuma atividade</SelectItem>
                         {activities.map((activity) => (
                           <SelectItem key={activity.id} value={activity.id}>
                             {activity.icon} {activity.title} ({formatDuration(activity.duration)})

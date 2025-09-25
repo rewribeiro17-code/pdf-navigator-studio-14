@@ -178,7 +178,12 @@ const ActivityPlanner: React.FC = () => {
               <Plus className="h-4 w-4 mr-2" />
               Nova Atividade
             </Button>
-            <Button size="sm" onClick={() => setShowWeeklyPlan(true)} data-testid="button-plan-week">
+            <Button 
+              size="sm" 
+              onClick={() => setShowWeeklyPlan(true)} 
+              data-testid="button-plan-week"
+              disabled={memberActivities.length === 0}
+            >
               <Edit3 className="h-4 w-4 mr-2" />
               {weeklyPlan ? 'Editar Plano' : 'Planejar Semana'}
             </Button>
@@ -215,21 +220,10 @@ const ActivityPlanner: React.FC = () => {
             <Calendar className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
             <p className="text-muted-foreground mb-4">
               {memberActivities.length === 0 
-                ? 'Primeiro crie algumas atividades, depois planeje a semana'
-                : 'Clique em "Planejar Semana" para organizar as atividades'
+                ? 'Primeiro crie algumas atividades usando o botão "Nova Atividade" acima'
+                : 'Use o botão "Planejar Semana" acima para organizar as atividades'
               }
             </p>
-            {memberActivities.length === 0 ? (
-              <Button onClick={() => setShowAddActivity(true)} data-testid="button-create-first-activity">
-                <Plus className="h-4 w-4 mr-2" />
-                Criar Primeira Atividade
-              </Button>
-            ) : (
-              <Button onClick={() => setShowWeeklyPlan(true)} data-testid="button-plan-first-week">
-                <Edit3 className="h-4 w-4 mr-2" />
-                Planejar Semana
-              </Button>
-            )}
           </div>
         )}
       </Card>
