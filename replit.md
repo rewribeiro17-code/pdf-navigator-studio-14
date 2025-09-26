@@ -18,7 +18,7 @@ This is a React application built with Vite that provides a digital detox guide 
 - Responsive design with mobile-first approach
 - Chapter-based content navigation
 - Bonus book sections with PDF downloads
-- **Premium Features**: Screen Time Monitor and Activity Planner
+- **Premium Features**: Screen Time Monitor
 - **Smart Upsell System**: Different experiences for free vs premium users
 - Beautiful UI with custom color palette (teal primary, coral secondary, purple accent)
 - Dark mode support (configured but not implemented)
@@ -51,18 +51,17 @@ src/
 - Bonus books feature with PDF downloads
 - **Premium Dashboard**: Access to exclusive tools
 - **Screen Time Monitor**: Real-time family device usage tracking
-- **Activity Planner**: Weekly offline activities scheduler
 - **Smart Premium Button**: Shows upsell for free users, dashboard for premium users
 - Protected routes requiring authentication
 
 ## Recent Changes (Sep 25, 2025)
 - **Premium System Implementation**: Complete freemium model with tiered access
 - **AuthContext Enhanced**: Added isPremium property to User interface
-- **Premium Pages**: PremiumUpsell, PremiumDashboard, ScreenTimeMonitor, ActivityPlanner
+- **Premium Pages**: PremiumUpsell, PremiumDashboard, ScreenTimeMonitor
 - **Smart Navigation**: Golden premium button that adapts to user type
 - **PDF Downloads**: Real PDFs integrated in bonus section
 - **Pricing Strategy**: R$ 14,90/month with external checkout preparation
-- **Premium Types**: FamilyMember, ScreenTimeData, Activity, WeeklyPlan interfaces
+- **Premium Types**: FamilyMember, ScreenTimeData interfaces
 - Updated Vite configuration for Replit environment (port 5000, host 0.0.0.0)
 - Added production start script using vite preview
 - Configured deployment settings for autoscale deployment

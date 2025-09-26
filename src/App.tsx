@@ -14,7 +14,6 @@ import NotFound from "./pages/NotFound";
 import PremiumUpsell from "./pages/premium/PremiumUpsell";
 import PremiumDashboard from "./pages/premium/PremiumDashboard";
 import ScreenTimeMonitor from "./pages/premium/ScreenTimeMonitor";
-import ActivityPlanner from "./pages/premium/ActivityPlanner";
 
 const queryClient = new QueryClient();
 
@@ -44,7 +43,6 @@ const App = () => (
             }>
               <Route index element={<PremiumDashboard />} />
               <Route path="screen-time" element={<ScreenTimeMonitor />} />
-              <Route path="activity-planner" element={<ActivityPlanner />} />
             </Route>
             <Route path="/premium/upsell" element={
               <ProtectedRoute>

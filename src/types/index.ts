@@ -53,21 +53,3 @@ export interface ScreenTimeData {
   apps: { name: string; usage: number }[];
 }
 
-export interface Activity {
-  id: string;
-  title: string;
-  description: string;
-  duration: number; // minutes
-  category: 'physical' | 'creative' | 'educational' | 'social' | 'family';
-  ageRange: [number, number];
-  icon: string;
-}
-
-export interface WeeklyPlan {
-  memberId: string;
-  activities: {
-    day: string;
-    activity: Activity;
-    completed: boolean;
-  }[];
-}

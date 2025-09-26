@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Monitor, Calendar, Crown } from 'lucide-react';
+import { ArrowLeft, Monitor, Crown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const PremiumDashboard: React.FC = () => {
@@ -30,9 +30,9 @@ const PremiumDashboard: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div className="flex justify-center max-w-2xl mx-auto">
         {/* Monitor de Tempo de Tela */}
-        <Card className="p-8 hover:shadow-lg transition-shadow cursor-pointer border-2 border-blue-200 bg-gradient-to-br from-card to-blue-50"
+        <Card className="p-8 hover:shadow-lg transition-shadow cursor-pointer border-2 border-blue-200 bg-gradient-to-br from-card to-blue-50 w-full"
               onClick={() => navigate('/premium/screen-time')}>
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 mb-4">
@@ -47,23 +47,13 @@ const PremiumDashboard: React.FC = () => {
             </Button>
           </div>
         </Card>
-
-        {/* Planejador de Atividades */}
-        <Card className="p-8 hover:shadow-lg transition-shadow cursor-pointer border-2 border-green-200 bg-gradient-to-br from-card to-green-50"
-              onClick={() => navigate('/premium/activity-planner')}>
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
-              <Calendar className="h-8 w-8 text-green-600" />
-            </div>
-            <h3 className="text-xl font-bold mb-2 text-green-600">Planejador de Atividades</h3>
-            <p className="text-muted-foreground mb-4">
-              Organize atividades offline personalizadas para cada criança
-            </p>
-            <Button className="bg-green-600 hover:bg-green-700">
-              Acessar Planejador
-            </Button>
-          </div>
-        </Card>
+      </div>
+      
+      <div className="text-center mt-8 p-6 bg-gray-50 rounded-lg max-w-2xl mx-auto">
+        <h3 className="text-lg font-semibold mb-2">🚀 Mais ferramentas em breve!</h3>
+        <p className="text-muted-foreground">
+          Estamos desenvolvendo novas funcionalidades premium para tornar a desintoxicação digital ainda mais eficaz.
+        </p>
       </div>
     </div>
   );
