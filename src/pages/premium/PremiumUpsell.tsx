@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Crown, CheckCircle, Monitor, Calendar } from 'lucide-react';
+import { ArrowLeft, Crown, CheckCircle, Monitor } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const PremiumUpsell: React.FC = () => {
@@ -78,40 +78,6 @@ const PremiumUpsell: React.FC = () => {
           </ul>
         </Card>
 
-        {/* Planejador de Atividades */}
-        <Card className="p-6 border-2 border-yellow-200 bg-gradient-to-br from-card to-yellow-50">
-          <div className="flex items-center mb-4">
-            <div className="p-3 rounded-full bg-green-100 mr-4">
-              <Calendar className="h-6 w-6 text-green-600" />
-            </div>
-            <h3 className="text-xl font-bold text-green-600">Planejador de Atividades Offline</h3>
-          </div>
-          <p className="text-muted-foreground mb-4">
-            Agenda semanal personalizada por criança
-          </p>
-          <ul className="space-y-2">
-            <li className="flex items-center">
-              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-              <span className="text-sm">Agenda semanal personalizada por criança</span>
-            </li>
-            <li className="flex items-center">
-              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-              <span className="text-sm">Biblioteca com 200+ atividades categorizadas</span>
-            </li>
-            <li className="flex items-center">
-              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-              <span className="text-sm">Sugestões inteligentes baseadas na idade</span>
-            </li>
-            <li className="flex items-center">
-              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-              <span className="text-sm">Sistema de conquistas e gamificação</span>
-            </li>
-            <li className="flex items-center">
-              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-              <span className="text-sm">Acompanhamento de conclusão de atividades</span>
-            </li>
-          </ul>
-        </Card>
       </div>
 
       {/* CTA Principal */}
