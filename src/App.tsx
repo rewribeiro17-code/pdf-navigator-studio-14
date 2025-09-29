@@ -14,6 +14,10 @@ import NotFound from "./pages/NotFound";
 import PremiumUpsell from "./pages/premium/PremiumUpsell";
 import PremiumDashboard from "./pages/premium/PremiumDashboard";
 import ScreenTimeMonitor from "./pages/premium/ScreenTimeMonitor";
+import WeeklyReports from "./pages/premium/WeeklyReports";
+import SmartAlerts from "./pages/premium/SmartAlerts";
+import FamilyGoals from "./pages/premium/FamilyGoals";
+import FocusMode from "./pages/premium/FocusMode";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +47,10 @@ const App = () => (
             }>
               <Route index element={<PremiumDashboard />} />
               <Route path="screen-time" element={<ScreenTimeMonitor />} />
+              <Route path="weekly-reports" element={<WeeklyReports />} />
+              <Route path="smart-alerts" element={<SmartAlerts />} />
+              <Route path="family-goals" element={<FamilyGoals />} />
+              <Route path="focus-mode" element={<FocusMode />} />
             </Route>
             <Route path="/premium/upsell" element={
               <ProtectedRoute>
