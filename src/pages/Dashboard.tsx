@@ -108,9 +108,9 @@ const Dashboard: React.FC = () => {
 
       {/* Quick Navigation */}
       <Card className="p-6">
-        <h2 className="text-xl font-semibold mb-4">Navegação Rápida</h2>
+        <h2 className="text-xl font-semibold mb-4">Navegação Rápida - As 4 Etapas</h2>
         <div className="grid md:grid-cols-2 gap-4">
-          {bookContent.chapters.slice(0, 4).map((chapter) => (
+          {bookContent.chapters.filter(chapter => chapter.id.startsWith('stage')).map((chapter) => (
             <Button
               key={chapter.id}
               variant="outline"
