@@ -99,11 +99,8 @@ const ChapterView: React.FC<ChapterViewProps> = ({
             Capítulo Anterior
           </Button> : <div />}
         
-        {nextChapterId ? <Button onClick={() => navigate(`/app/${nextChapterId}`)} className="bg-gradient-to-r from-primary to-primary-glow hover:opacity-90">
+        {nextChapterId && <Button onClick={() => navigate(`/app/${nextChapterId}`)} className="bg-gradient-to-r from-primary to-primary-glow hover:opacity-90">
             Conclusão
-            <ArrowRight className="h-4 w-4 ml-2" />
-          </Button> : <Button onClick={() => navigate('/app/conclusion')} className="bg-gradient-to-r from-accent to-secondary hover:opacity-90">
-            Ver Conclusão
             <ArrowRight className="h-4 w-4 ml-2" />
           </Button>}
       </div>
