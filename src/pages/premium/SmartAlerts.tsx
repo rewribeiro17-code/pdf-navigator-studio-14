@@ -112,19 +112,6 @@ const SmartAlerts: React.FC = () => {
     return () => clearInterval(interval);
   }, [familyMembers, alertSettings]);
 
-  const markAsRead = (alertId: string) => {
-    setAlerts(prev => prev.map(alert => 
-      alert.id === alertId ? { ...alert, isRead: true } : alert
-    ));
-  };
-
-  const markAllAsRead = () => {
-    setAlerts(prev => prev.map(alert => ({ ...alert, isRead: true })));
-  };
-
-  const dismissAlert = (alertId: string) => {
-    setAlerts(prev => prev.filter(alert => alert.id !== alertId));
-  };
 
   const getAlertIcon = (type: SmartAlert['type']) => {
     switch (type) {
