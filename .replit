@@ -4,6 +4,7 @@ expertMode = true
 
 [nix]
 channel = "stable-25_05"
+packages = ["codex"]
 
 [deployment]
 deploymentTarget = "autoscale"
@@ -45,7 +46,3 @@ externalPort = 3000
 [[ports]]
 localPort = 41369
 externalPort = 3001
-
-[[ports]]
-localPort = 43697
-externalPort = 3002
