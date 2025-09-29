@@ -100,7 +100,7 @@ const ChapterView: React.FC<ChapterViewProps> = ({
           </Button> : <div />}
         
         {nextChapterId ? <Button onClick={() => navigate(`/app/${nextChapterId}`)} className="bg-gradient-to-r from-primary to-primary-glow hover:opacity-90">
-            Próximo Capítulo
+            Conclusão
             <ArrowRight className="h-4 w-4 ml-2" />
           </Button> : <Button onClick={() => navigate('/app/conclusion')} className="bg-gradient-to-r from-accent to-secondary hover:opacity-90">
             Ver Conclusão
