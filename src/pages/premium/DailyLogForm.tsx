@@ -11,7 +11,7 @@ import { useScreenTimeStorage } from '@/hooks/useScreenTimeStorage';
 import { useDailyLogs } from '@/hooks/useDailyLogs';
 import { useToast } from '@/hooks/use-toast';
 
-const HOURS = Array.from({ length: 24 }, (_, i) => i);
+const HOURS = Array.from({ length: 16 }, (_, i) => i + 7); // 7h às 22h
 
 const DailyLogForm = () => {
   const navigate = useNavigate();
