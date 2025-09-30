@@ -41,7 +41,7 @@ const DAYS: { key: DayOfWeek; label: string }[] = [
   { key: 'sunday', label: 'Domingo' },
 ];
 
-const HOURS = Array.from({ length: 24 }, (_, i) => i);
+const HOURS = Array.from({ length: 16 }, (_, i) => i + 7); // 7h às 22h
 
 const FamilyMemberEdit = () => {
   const { id } = useParams();
