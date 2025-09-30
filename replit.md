@@ -56,18 +56,32 @@ src/
 - Protected routes requiring authentication
 
 ## Recent Changes (Sep 30, 2025)
+
+### Educational Tracking System Implementation
+- **Complete Family Member Profile System**: Apps used, time limits per app, and allowed hours configuration
+- **Manual Observation System**: Daily and weekly log forms for parents to record child behavior
+- **Comparative Analysis Reports**: 
+  - Compliance analysis: Compares allowed hours vs actual usage with violation details
+  - App usage frequency tracking: Shows most used apps based on parent observations
+  - Automatic insights generation based on compliance and behavior patterns
+- **Data Model Expansion**: FamilyMember with apps/appLimits/allowedHours, DailyLog and WeeklyLog types
+- **Storage Hooks**: useDailyLogs and useWeeklyLogs for localStorage persistence
+- **Bug Fixes**: 
+  - Fixed compliance logic to only count days with configured allowedHours
+  - Removed invalid app comparison (minutes vs count), now shows frequency only
+  - Corrected navigation from Etapa 3 to Dashboard
+
+### Premium System Architecture
 - **Premium System Simplification**: Reduced from 5 to 2 essential tools based on user feedback
 - **Removed Tools**: Monitor de Tempo de Tela, Alertas Inteligentes, Metas Familiares (excesso de informação)
 - **Kept Tools**: Modo Foco (Focus Mode) e Relatórios Semanais (Weekly Reports)
 - **Dashboard Reorganization**: Conclusão moved after Etapa 4, Bônus and Premium moved down
 - **Sidebar Reorganization**: Logical order (Etapas → Conclusão → Bônus → Premium)
-- **Simplified Storage**: useScreenTimeStorage hook simplified to manage only family members
-- **Bug Fixes**: Fixed navigation issue from Etapa 3 to Dashboard
-- **Family Management Page**: New dedicated page at /premium/family to add/edit/remove family members
-- **Premium Dashboard Layout**: "Gerenciar Família" transformed into prominent teal gradient banner above tools grid (2-column layout)
-- **Accessibility Improvements**: Removed nested interactive controls, added aria-hidden to decorative icons, keyboard navigation ready
-- **Full Premium Flow Working**: Login → Dashboard → Add Family → Use Tools (tested and verified)
-- Updated routes and removed unused files/hooks for cleaner codebase
+- **Family Management Page**: Dedicated page at /premium/family with clickable cards
+- **Family Member Edit Page**: Complete profile editor with apps, limits, and allowed hours grid
+- **Premium Dashboard Layout**: "Gerenciar Família" as prominent teal gradient banner above tools
+- **Accessibility Improvements**: Removed nested interactive controls, added aria-hidden to decorative icons
+- **Full Premium Flow Working**: Login → Dashboard → Family Management → Edit Profile → Daily/Weekly Logs → Reports
 
 ## Previous Changes (Sep 25, 2025)
 - **Premium System Implementation**: Complete freemium model with tiered access
