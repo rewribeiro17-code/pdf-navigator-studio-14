@@ -63,6 +63,9 @@ src/
 - **Sidebar Reorganization**: Logical order (Etapas → Conclusão → Bônus → Premium)
 - **Simplified Storage**: useScreenTimeStorage hook simplified to manage only family members
 - **Bug Fixes**: Fixed navigation issue from Etapa 3 to Dashboard
+- **Family Management Page**: New dedicated page at /premium/family to add/edit/remove family members
+- **Smart Premium CTA**: Dashboard shows "Add Family" button when no members exist
+- **Full Premium Flow Working**: Login → Dashboard → Add Family → Use Tools (tested and verified)
 - Updated routes and removed unused files/hooks for cleaner codebase
 
 ## Previous Changes (Sep 25, 2025)
