@@ -59,6 +59,11 @@ src/
 
 ### Educational Tracking System Implementation
 - **Complete Family Member Profile System**: Apps used, time limits per app, and allowed hours configuration
+- **Simplified Schedule Interface**: Refactored "Horários Permitidos" from 168-cell grid to add/remove system
+  - Shows only configured schedules in clean cards
+  - Dialog-based adding with day selector and multi-hour grid
+  - Individual hour removal and full day removal options
+  - Empty state guidance with visual feedback
 - **Manual Observation System**: Daily and weekly log forms for parents to record child behavior
 - **Comparative Analysis Reports**: 
   - Compliance analysis: Compares allowed hours vs actual usage with violation details
