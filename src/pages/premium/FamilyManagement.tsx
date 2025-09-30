@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowLeft, UserPlus, Trash2, Users } from 'lucide-react';
+import { ArrowLeft, UserPlus, Trash2, Users, Edit } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useScreenTimeStorage } from '@/hooks/useScreenTimeStorage';
 import { useToast } from '@/hooks/use-toast';
@@ -156,7 +156,8 @@ const FamilyManagement: React.FC = () => {
               {familyMembers.map((member) => (
                 <div
                   key={member.id}
-                  className="flex items-center justify-between p-4 bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg border"
+                  className="flex items-center justify-between p-4 bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg border hover:shadow-md transition-shadow cursor-pointer"
+                  onClick={() => navigate(`/premium/family/edit/${member.id}`)}
                   data-testid={`member-card-${member.id}`}
                 >
                   <div className="flex-1">
@@ -166,16 +167,38 @@ const FamilyManagement: React.FC = () => {
                       <span>•</span>
                       <span>{member.dailyLimit} min/dia</span>
                     </div>
+                    {member.apps && member.apps.length > 0 && (
+                      <p className="text-xs text-teal-600 mt-2">
+                        ✓ Perfil configurado
+                      </p>
+                    )}
                   </div>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => handleDelete(member.id, member.name)}
-                    className="hover:bg-destructive/10 hover:text-destructive"
-                    data-testid={`button-delete-${member.id}`}
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/premium/family/edit/${member.id}`);
+                      }}
+                      className="hover:bg-teal/10 hover:text-teal-600"
+                      data-testid={`button-edit-${member.id}`}
+                    >
+                      <Edit className="h-4 w-4" aria-hidden="true" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(member.id, member.name);
+                      }}
+                      className="hover:bg-destructive/10 hover:text-destructive"
+                      data-testid={`button-delete-${member.id}`}
+                    >
+                      <Trash2 className="h-4 w-4" aria-hidden="true" />
+                    </Button>
+                  </div>
                 </div>
               ))}
             </div>

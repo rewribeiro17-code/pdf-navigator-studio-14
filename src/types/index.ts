@@ -38,6 +38,8 @@ export interface BonusBook {
   pdfUrl?: string;
 }
 
+export type DayOfWeek = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
+
 export interface FamilyMember {
   id: string;
   name: string;
@@ -45,6 +47,34 @@ export interface FamilyMember {
   dailyLimit: number; // minutes
   currentUsage: number; // minutes today
   avatar?: string;
+  // Perfil detalhado
+  apps?: string[]; // Apps que o membro usa
+  appLimits?: Record<string, number>; // Limite em minutos por app
+  allowedHours?: Partial<Record<DayOfWeek, number[]>>; // Horários permitidos por dia (ex: [14,15,16] = 14h-17h)
+}
+
+// Registros de Observação dos Pais
+export interface DailyLog {
+  id: string;
+  date: string; // ISO date
+  familyMemberId: string;
+  actualHoursUsed: number[]; // Horários que realmente usou (ex: [15,16,20] = usou às 15h, 16h e 20h)
+  appsUsed: string[]; // Apps que usou no dia
+  behaviorWithPhone: string; // Comportamento observado COM celular
+  behaviorWithoutPhone: string; // Comportamento observado SEM celular
+  notes?: string; // Observações adicionais
+}
+
+export interface WeeklyLog {
+  id: string;
+  weekStartDate: string; // ISO date (segunda-feira)
+  weekEndDate: string; // ISO date (domingo)
+  familyMemberId: string;
+  summary: string; // Resumo da semana
+  topApps: string[]; // Apps mais usados
+  behaviorPatterns: string; // Padrões de comportamento observados
+  progress: string; // Evolução percebida
+  notes?: string; // Observações adicionais
 }
 
 export interface ScreenTimeData {

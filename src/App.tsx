@@ -16,6 +16,9 @@ import PremiumDashboard from "./pages/premium/PremiumDashboard";
 import WeeklyReports from "./pages/premium/WeeklyReports";
 import FocusMode from "./pages/premium/FocusMode";
 import FamilyManagement from "./pages/premium/FamilyManagement";
+import FamilyMemberEdit from "./pages/premium/FamilyMemberEdit";
+import DailyLogForm from "./pages/premium/DailyLogForm";
+import WeeklyLogForm from "./pages/premium/WeeklyLogForm";
 
 const queryClient = new QueryClient();
 
@@ -45,7 +48,10 @@ const App = () => (
             }>
               <Route index element={<PremiumDashboard />} />
               <Route path="family" element={<FamilyManagement />} />
+              <Route path="family/edit/:id" element={<FamilyMemberEdit />} />
               <Route path="weekly-reports" element={<WeeklyReports />} />
+              <Route path="daily-log" element={<DailyLogForm />} />
+              <Route path="weekly-log" element={<WeeklyLogForm />} />
               <Route path="focus-mode" element={<FocusMode />} />
             </Route>
             <Route path="/premium/upsell" element={
