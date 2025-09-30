@@ -9,13 +9,18 @@ import {
   Trophy, 
   Target,
   Users,
-  Sparkles
+  Sparkles,
+  CheckCircle,
+  Crown,
+  Gift
 } from 'lucide-react';
 import { bookContent } from '@/data/bookContent';
 import coverBg from '@/assets/cover-bg.jpg';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const totalChapters = bookContent.chapters.length;
   const readChapters = 0; // This could be tracked in a real app
   const progress = (readChapters / totalChapters) * 100;
@@ -74,7 +79,7 @@ const Dashboard: React.FC = () => {
       </Card>
 
       {/* Key Features */}
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 gap-6">
         <Card className="p-6 hover:shadow-lg transition-all hover:scale-105 cursor-pointer border-primary/20">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center mb-4">
             <Target className="h-6 w-6 text-primary-foreground" />
@@ -92,16 +97,6 @@ const Dashboard: React.FC = () => {
           <h3 className="font-semibold mb-2">+10 mil Famílias</h3>
           <p className="text-sm text-muted-foreground">
             Já transformaram suas vidas com este método
-          </p>
-        </Card>
-
-        <Card className="p-6 hover:shadow-lg transition-all hover:scale-105 cursor-pointer border-accent/20">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center mb-4">
-            <Sparkles className="h-6 w-6 text-accent-foreground" />
-          </div>
-          <h3 className="font-semibold mb-2">Bônus Exclusivos</h3>
-          <p className="text-sm text-muted-foreground">
-            3 e-books adicionais para complementar sua jornada
           </p>
         </Card>
       </div>
@@ -127,6 +122,84 @@ const Dashboard: React.FC = () => {
               </div>
             </Button>
           ))}
+        </div>
+      </Card>
+
+      {/* Conclusion */}
+      <Card className="p-8 bg-gradient-to-r from-accent/10 to-secondary/10 border-accent/30">
+        <div className="flex items-start gap-4">
+          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent to-secondary flex items-center justify-center flex-shrink-0">
+            <CheckCircle className="h-8 w-8 text-white" />
+          </div>
+          <div className="flex-1">
+            <h2 className="text-2xl font-bold mb-2">Conclusão</h2>
+            <p className="text-muted-foreground mb-4">
+              Uma nova vida para sua família. Transforme a relação com a tecnologia!
+            </p>
+            <Button 
+              size="lg"
+              onClick={() => navigate('/app/conclusion')}
+              className="bg-gradient-to-r from-accent to-secondary hover:opacity-90"
+            >
+              Ler Conclusão
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+      </Card>
+
+      {/* Bonus Books */}
+      <Card className="p-6">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center">
+            <Gift className="h-6 w-6 text-accent-foreground" />
+          </div>
+          <div>
+            <h2 className="text-xl font-semibold">Bônus Exclusivos</h2>
+            <p className="text-sm text-muted-foreground">3 e-books adicionais para complementar sua jornada</p>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-3 gap-4">
+          {bookContent.bonusBooks.map((book) => (
+            <Button
+              key={book.id}
+              variant="outline"
+              className="justify-start text-left h-auto p-4 hover:bg-accent/5 hover:border-accent/50"
+              onClick={() => navigate(`/app/bonus/${book.id}`)}
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-3xl">{book.icon}</span>
+                <div>
+                  <div className="font-semibold text-sm mb-1">{book.title}</div>
+                  <div className="text-xs text-muted-foreground">{book.description}</div>
+                </div>
+              </div>
+            </Button>
+          ))}
+        </div>
+      </Card>
+
+      {/* Premium CTA */}
+      <Card className="p-8 bg-gradient-to-r from-yellow-50 to-yellow-100 dark:from-yellow-950 dark:to-yellow-900 border-yellow-300 dark:border-yellow-700">
+        <div className="text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 mb-4">
+            <Crown className="h-8 w-8 text-white" />
+          </div>
+          <h2 className="text-2xl font-bold mb-2">Desbloqueie o Poder Completo</h2>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            {user?.isPremium 
+              ? 'Você tem acesso premium! Explore todas as ferramentas exclusivas.' 
+              : 'Acesse ferramentas premium de monitoramento, relatórios semanais, alertas inteligentes, metas familiares e modo foco.'}
+          </p>
+          <Button 
+            size="lg"
+            onClick={() => navigate(user?.isPremium ? '/premium' : '/premium/upsell')}
+            className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white font-semibold shadow-lg"
+          >
+            <Crown className="mr-2 h-5 w-5" />
+            {user?.isPremium ? 'Acessar Dashboard Premium' : '✨ Fazer Upgrade Premium ⭐'}
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
         </div>
       </Card>
     </div>
