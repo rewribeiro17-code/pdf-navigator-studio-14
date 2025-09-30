@@ -161,7 +161,7 @@ const WeeklyReports: React.FC = () => {
 
         <div className="flex gap-4 mb-6">
           <Select value={selectedMemberId} onValueChange={setSelectedMemberId}>
-            <SelectTrigger className="w-64">
+            <SelectTrigger className="w-64" data-testid="select-family-member">
               <SelectValue placeholder="Selecione um membro da família" />
             </SelectTrigger>
             <SelectContent>

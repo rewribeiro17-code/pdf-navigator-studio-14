@@ -1,11 +1,13 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Crown, BarChart3, Brain } from 'lucide-react';
+import { ArrowLeft, Crown, BarChart3, Brain, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useScreenTimeStorage } from '@/hooks/useScreenTimeStorage';
 
 const PremiumDashboard: React.FC = () => {
   const navigate = useNavigate();
+  const { familyMembers } = useScreenTimeStorage();
 
   return (
     <div className="animate-fade-in">
@@ -30,6 +32,27 @@ const PremiumDashboard: React.FC = () => {
           Ferramentas essenciais para sua reeducação digital
         </p>
       </div>
+
+      {/* Family Management CTA */}
+      {familyMembers.length === 0 && (
+        <Card className="p-6 mb-6 bg-gradient-to-r from-teal-50 to-blue-50 border-2 border-teal-200 max-w-4xl mx-auto">
+          <div className="text-center">
+            <Users className="h-12 w-12 mx-auto mb-3 text-teal-600" />
+            <h3 className="text-xl font-bold mb-2">Comece Adicionando Membros da Família</h3>
+            <p className="text-muted-foreground mb-4">
+              Adicione os membros da sua família para começar a usar as ferramentas premium
+            </p>
+            <Button 
+              onClick={() => navigate('/premium/family')}
+              className="bg-teal-600 hover:bg-teal-700"
+              data-testid="button-add-family"
+            >
+              <Users className="h-4 w-4 mr-2" />
+              Gerenciar Família
+            </Button>
+          </div>
+        </Card>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         {/* Modo Foco */}

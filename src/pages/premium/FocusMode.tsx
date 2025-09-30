@@ -185,7 +185,7 @@ const FocusMode: React.FC = () => {
 
         <div className="mb-6">
           <Select value={selectedMemberId} onValueChange={setSelectedMemberId}>
-            <SelectTrigger className="w-64">
+            <SelectTrigger className="w-64" data-testid="select-family-member">
               <SelectValue placeholder="Selecione um membro da família" />
             </SelectTrigger>
             <SelectContent>
@@ -229,6 +229,7 @@ const FocusMode: React.FC = () => {
                     variant="outline"
                     onClick={() => handleEndSession(false)}
                     className="flex-1"
+                    data-testid="button-pause-session"
                   >
                     <Pause className="h-4 w-4 mr-2" />
                     Pausar
@@ -237,6 +238,7 @@ const FocusMode: React.FC = () => {
                     variant="destructive"
                     onClick={() => handleEndSession(false)}
                     className="flex-1"
+                    data-testid="button-end-session"
                   >
                     <Square className="h-4 w-4 mr-2" />
                     Terminar
@@ -283,6 +285,7 @@ const FocusMode: React.FC = () => {
                             setSelectedTemplate(template);
                             handleStartSession(template.id);
                           }}
+                          data-testid={`button-start-quick-${template.id}`}
                         >
                           <Play className="h-4 w-4 mr-2" />
                           Iniciar
@@ -321,6 +324,7 @@ const FocusMode: React.FC = () => {
                           setSelectedTemplate(template);
                           handleStartSession(template.id);
                         }}
+                        data-testid={`button-start-template-${template.id}`}
                       >
                         <Play className="h-4 w-4 mr-2" />
                         Iniciar Sessão
