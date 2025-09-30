@@ -64,7 +64,8 @@ src/
 - **Simplified Storage**: useScreenTimeStorage hook simplified to manage only family members
 - **Bug Fixes**: Fixed navigation issue from Etapa 3 to Dashboard
 - **Family Management Page**: New dedicated page at /premium/family to add/edit/remove family members
-- **Smart Premium CTA**: Dashboard shows "Add Family" button when no members exist
+- **Premium Dashboard Layout**: "Gerenciar Família" transformed into prominent teal gradient banner above tools grid (2-column layout)
+- **Accessibility Improvements**: Removed nested interactive controls, added aria-hidden to decorative icons, keyboard navigation ready
 - **Full Premium Flow Working**: Login → Dashboard → Add Family → Use Tools (tested and verified)
 - Updated routes and removed unused files/hooks for cleaner codebase
 
