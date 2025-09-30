@@ -33,28 +33,7 @@ const PremiumDashboard: React.FC = () => {
         </p>
       </div>
 
-      {/* Family Management CTA */}
-      {familyMembers.length === 0 && (
-        <Card className="p-6 mb-6 bg-gradient-to-r from-teal-50 to-blue-50 border-2 border-teal-200 max-w-4xl mx-auto">
-          <div className="text-center">
-            <Users className="h-12 w-12 mx-auto mb-3 text-teal-600" />
-            <h3 className="text-xl font-bold mb-2">Comece Adicionando Membros da Família</h3>
-            <p className="text-muted-foreground mb-4">
-              Adicione os membros da sua família para começar a usar as ferramentas premium
-            </p>
-            <Button 
-              onClick={() => navigate('/premium/family')}
-              className="bg-teal-600 hover:bg-teal-700"
-              data-testid="button-add-family"
-            >
-              <Users className="h-4 w-4 mr-2" />
-              Gerenciar Família
-            </Button>
-          </div>
-        </Card>
-      )}
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {/* Modo Foco */}
         <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer border-2 border-indigo-200 bg-gradient-to-br from-card to-indigo-50"
               onClick={() => navigate('/premium/focus-mode')}
@@ -87,6 +66,24 @@ const PremiumDashboard: React.FC = () => {
             </p>
             <Button size="sm" className="bg-green-600 hover:bg-green-700" data-testid="button-weekly-reports">
               Ver Relatórios
+            </Button>
+          </div>
+        </Card>
+
+        {/* Gerenciar Família */}
+        <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer border-2 border-teal-200 bg-gradient-to-br from-card to-teal-50"
+              onClick={() => navigate('/premium/family')}
+              data-testid="card-family-management">
+          <div className="text-center">
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-teal-100 mb-4">
+              <Users className="h-6 w-6 text-teal-600" />
+            </div>
+            <h3 className="text-lg font-bold mb-2 text-teal-600">Gerenciar Família</h3>
+            <p className="text-muted-foreground text-sm mb-4">
+              Adicione ou edite membros da família ({familyMembers.length} cadastrado{familyMembers.length !== 1 ? 's' : ''})
+            </p>
+            <Button size="sm" className="bg-teal-600 hover:bg-teal-700" data-testid="button-manage-family">
+              Gerenciar
             </Button>
           </div>
         </Card>
