@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { ArrowLeft, ArrowRight, Clock, CheckCircle, ListChecks, Lightbulb, Heart, Target } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Clock, CheckCircle, ListChecks, Lightbulb, Heart, Target, Home } from 'lucide-react';
 import { Chapter } from '@/types';
 interface ChapterViewProps {
   chapter: Chapter;
@@ -99,10 +99,21 @@ const ChapterView: React.FC<ChapterViewProps> = ({
             Capítulo Anterior
           </Button> : <div />}
         
-        {nextChapterId && <Button onClick={() => navigate(`/app/${nextChapterId}`)} className="bg-gradient-to-r from-primary to-primary-glow hover:opacity-90">
+        {chapter.id === 'conclusion' ? (
+          <Button 
+            onClick={() => navigate('/app')} 
+            className="bg-gradient-to-r from-primary to-primary-glow hover:opacity-90"
+            data-testid="button-home"
+          >
+            <Home className="h-4 w-4 mr-2" />
+            Início
+          </Button>
+        ) : nextChapterId && (
+          <Button onClick={() => navigate(`/app/${nextChapterId}`)} className="bg-gradient-to-r from-primary to-primary-glow hover:opacity-90">
             Próximo Capítulo
             <ArrowRight className="h-4 w-4 ml-2" />
-          </Button>}
+          </Button>
+        )}
       </div>
     </div>;
 };
