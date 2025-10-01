@@ -55,7 +55,17 @@ src/
 - **Smart Premium Button**: Shows upsell for free users, dashboard for premium users
 - Protected routes requiring authentication
 
-## Recent Changes (Sep 30, 2025)
+## Recent Changes (Oct 1, 2025)
+
+### UI/UX Improvements
+- **Hours Limitation**: Limited allowed hours to 7h-22h range in both profile configuration and daily logs (educational context)
+- **Navigation Bug Fixes**: 
+  - Fixed blank screen issue when navigating from Etapa 2 to Etapa 3 in responsive mode
+  - Added missing subtitle for Etapa 3: "Preenchendo o tempo com experiências significativas"
+  - Fixed navigation button text from hardcoded "Conclusão" to dynamic "Próximo Capítulo"
+  - Added safe rendering validation for chapter subtitles
+
+## Previous Changes (Sep 30, 2025)
 
 ### Educational Tracking System Implementation
 - **Complete Family Member Profile System**: Apps used, time limits per app, and allowed hours configuration
