@@ -68,11 +68,12 @@ src/
   - Added "Início" button on the right side of navigation in Conclusion page
   - Button redirects users back to main dashboard for easy navigation
 - **Weekly Reports Chart Enhancement**:
-  - Transformed line chart into pie chart for better visual understanding
-  - Shows "Tempo Usado" vs "Tempo Disponível" in weekly view
-  - Added "Como funciona o gráfico?" help button with clear explanation dialog
-  - Used simple, accessible language in explanations with practical examples
-  - Visual legend with color indicators for easy interpretation
+  - **Tempo de Uso Diário**: Transformed line chart into pie chart showing "Tempo Usado" vs "Tempo Disponível"
+  - **Conformidade de Horários**: Transformed bar chart into pie chart showing hours in compliance (green) vs violations (red)
+  - Added "Como funciona o gráfico?" help buttons with clear explanation dialogs for both charts
+  - Used simple, accessible language in explanations with practical examples (non-technical parents)
+  - Visual legends with color indicators for easy interpretation
+  - Contextualized tooltips showing hours/minutes with proper formatting
 
 ## Previous Changes (Sep 30, 2025)
 
