@@ -4,13 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, TrendingDown, TrendingUp, Award, Target, Clock, BarChart3, Download, CalendarPlus, FileText, AlertTriangle, CheckCircle } from 'lucide-react';
+import { ArrowLeft, TrendingDown, TrendingUp, Award, Target, Clock, BarChart3, Download, CalendarPlus, FileText, AlertTriangle, CheckCircle, HelpCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useScreenTimeStorage } from '@/hooks/useScreenTimeStorage';
 import { useDailyLogs } from '@/hooks/useDailyLogs';
 import { useWeeklyLogs } from '@/hooks/useWeeklyLogs';
 import type { DayOfWeek } from '@/types';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Legend } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Legend, PieChart, Pie, Cell } from 'recharts';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
 const WeeklyReports: React.FC = () => {
   const navigate = useNavigate();
@@ -205,6 +206,28 @@ const WeeklyReports: React.FC = () => {
       date: day.date
     }));
   }, [selectedMemberId, familyMembers, getWeeklyUsage]);
+
+  const pieChartData = useMemo(() => {
+    if (!selectedMember || dailyLogsForMember.length === 0) {
+      return [];
+    }
+
+    // Calcular total de minutos usados na semana
+    const totalUsed = dailyLogsForMember.slice(-7).reduce((sum, log) => {
+      return sum + log.actualHoursUsed.length * 60; // cada hora = 60 min
+    }, 0);
+
+    // Limite semanal aproximado (7 dias * limite diário)
+    const dailyLimit = selectedMember.dailyLimit || 120;
+    const weeklyLimit = dailyLimit * 7;
+    
+    const remaining = Math.max(0, weeklyLimit - totalUsed);
+
+    return [
+      { name: 'Tempo Usado', value: totalUsed, color: '#3b82f6' },
+      { name: 'Tempo Disponível', value: remaining, color: '#e5e7eb' }
+    ];
+  }, [selectedMember, dailyLogsForMember]);
 
   if (familyMembers.length === 0) {
     return (
@@ -435,48 +458,99 @@ const WeeklyReports: React.FC = () => {
             </Card>
           )}
 
-          {/* Uso Diário da Semana (Gráfico Original) */}
+          {/* Uso Diário da Semana (Gráfico de Pizza) */}
           <Card className="p-6" data-testid="card-usage-chart">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold">Tempo de Uso Diário</h3>
+              <div className="flex items-center gap-3">
+                <h3 className="text-xl font-bold">Tempo de Uso Diário</h3>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="ghost" size="sm" className="gap-2" data-testid="button-chart-help">
+                      <HelpCircle className="h-4 w-4" />
+                      Como funciona o gráfico?
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-lg">
+                    <DialogHeader>
+                      <DialogTitle>Como entender o gráfico?</DialogTitle>
+                      <DialogDescription className="space-y-3 pt-4 text-base">
+                        <p className="text-gray-700">
+                          Este gráfico mostra de forma visual <strong>quanto tempo seu filho usou o celular</strong> comparado com o tempo que estava disponível.
+                        </p>
+                        
+                        <div className="space-y-2 bg-blue-50 p-4 rounded-lg">
+                          <p className="flex items-center gap-2">
+                            <span className="w-4 h-4 rounded-full bg-blue-500"></span>
+                            <strong>Parte Azul:</strong> Tempo que foi usado no celular
+                          </p>
+                          <p className="flex items-center gap-2">
+                            <span className="w-4 h-4 rounded-full bg-gray-300"></span>
+                            <strong>Parte Cinza:</strong> Tempo que ainda estava livre
+                          </p>
+                        </div>
+
+                        <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+                          <p className="text-sm text-amber-900">
+                            <strong>💡 Exemplo prático:</strong> Se o limite é 2 horas por dia (840 minutos na semana) e seu filho usou 420 minutos, o gráfico mostrará metade azul (usado) e metade cinza (disponível).
+                          </p>
+                        </div>
+
+                        <p className="text-gray-600 text-sm">
+                          Quanto maior a parte azul, mais tempo foi usado. Use esse visual para conversar com seu filho sobre o uso equilibrado do celular.
+                        </p>
+                      </DialogDescription>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
+              </div>
               <Button variant="outline" size="sm" data-testid="button-export">
                 <Download className="h-4 w-4 mr-2" />
                 Exportar
               </Button>
             </div>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="day" />
-                <YAxis label={{ value: 'Minutos', angle: -90, position: 'insideLeft' }} />
-                <Tooltip 
-                  labelFormatter={(label, payload) => {
-                    const point = payload?.[0]?.payload;
-                    return point ? new Date(point.date).toLocaleDateString('pt-BR') : label;
-                  }}
-                  formatter={(value, name) => [
-                    `${value} min`,
-                    name === 'usage' ? 'Tempo de Uso' : 'Limite Diário'
-                  ]}
-                />
-                <Line 
-                  type="monotone" 
-                  dataKey="usage" 
-                  stroke="#3b82f6" 
-                  strokeWidth={3}
-                  dot={{ fill: '#3b82f6', strokeWidth: 2, r: 4 }}
-                  name="Uso"
-                />
-                <Line 
-                  type="monotone" 
-                  dataKey="limit" 
-                  stroke="#ef4444" 
-                  strokeDasharray="5 5"
-                  dot={false}
-                  name="Limite"
-                />
-              </LineChart>
-            </ResponsiveContainer>
+            
+            {pieChartData.length > 0 ? (
+              <div className="flex flex-col items-center">
+                <ResponsiveContainer width="100%" height={300}>
+                  <PieChart>
+                    <Pie
+                      data={pieChartData}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      label={({ name, value, percent }) => 
+                        `${name}: ${value} min (${(percent * 100).toFixed(0)}%)`
+                      }
+                      outerRadius={100}
+                      fill="#8884d8"
+                      dataKey="value"
+                    >
+                      {pieChartData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                    <Tooltip 
+                      formatter={(value: number) => `${value} minutos`}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+                
+                <div className="flex gap-6 mt-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-blue-500"></div>
+                    <span className="text-sm text-gray-600">Tempo Usado</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-gray-300"></div>
+                    <span className="text-sm text-gray-600">Tempo Disponível</span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <p className="text-center text-muted-foreground py-8">
+                Registre as observações diárias para visualizar o gráfico
+              </p>
+            )}
           </Card>
 
           {/* Evolução - Registros Semanais */}
