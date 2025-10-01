@@ -229,6 +229,44 @@ const WeeklyReports: React.FC = () => {
     ];
   }, [selectedMember, dailyLogsForMember]);
 
+  const compliancePieData = useMemo(() => {
+    if (!selectedMember || dailyLogsForMember.length === 0) {
+      return [];
+    }
+
+    const allowedHours = selectedMember.allowedHours || {};
+    let totalHoursInCompliance = 0;
+    let totalHoursInViolation = 0;
+
+    dailyLogsForMember.forEach(log => {
+      const logDate = new Date(log.date);
+      const dayName = logDate.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase() as DayOfWeek;
+      const allowed = allowedHours[dayName] || [];
+      
+      // Só analisar se houver horários configurados para este dia
+      if (allowed.length === 0) {
+        return;
+      }
+
+      log.actualHoursUsed.forEach(hour => {
+        if (allowed.includes(hour)) {
+          totalHoursInCompliance++;
+        } else {
+          totalHoursInViolation++;
+        }
+      });
+    });
+
+    if (totalHoursInCompliance === 0 && totalHoursInViolation === 0) {
+      return [];
+    }
+
+    return [
+      { name: 'Dentro do Permitido', value: totalHoursInCompliance, color: '#22c55e' },
+      { name: 'Fora do Permitido', value: totalHoursInViolation, color: '#ef4444' }
+    ];
+  }, [selectedMember, dailyLogsForMember]);
+
   if (familyMembers.length === 0) {
     return (
       <div className="animate-fade-in max-w-4xl mx-auto">
@@ -414,27 +452,94 @@ const WeeklyReports: React.FC = () => {
           )}
 
           {/* Gráfico Comparativo: Horários Permitidos vs Reais */}
-          {comparisonChartData.length > 0 && (
+          {compliancePieData.length > 0 && (
             <Card className="p-6" data-testid="card-comparison-chart">
-              <h3 className="text-xl font-bold mb-4">
-                Horários Permitidos vs Horários Reais de Uso
-              </h3>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={comparisonChartData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="day" />
-                  <YAxis label={{ value: 'Horas', angle: -90, position: 'insideLeft' }} />
-                  <Tooltip
-                    formatter={(value, name) => [
-                      `${value} hora(s)`,
-                      name === 'allowedCount' ? 'Permitido' : 'Usado'
-                    ]}
-                  />
-                  <Legend />
-                  <Bar dataKey="allowedCount" fill="#22c55e" name="Permitido" />
-                  <Bar dataKey="actualCount" fill="#3b82f6" name="Usado" />
-                </BarChart>
-              </ResponsiveContainer>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <h3 className="text-xl font-bold">
+                    Horários Permitidos vs Horários Reais de Uso
+                  </h3>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="ghost" size="sm" className="gap-2" data-testid="button-compliance-help">
+                        <HelpCircle className="h-4 w-4" />
+                        Como funciona o gráfico?
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-lg">
+                      <DialogHeader>
+                        <DialogTitle>Como entender o gráfico de conformidade?</DialogTitle>
+                        <DialogDescription className="space-y-3 pt-4 text-base">
+                          <p className="text-gray-700">
+                            Este gráfico mostra <strong>quantas horas do uso estão dentro ou fora dos horários permitidos</strong> que você configurou.
+                          </p>
+                          
+                          <div className="space-y-2 bg-green-50 p-4 rounded-lg border border-green-200">
+                            <p className="flex items-center gap-2">
+                              <span className="w-4 h-4 rounded-full bg-green-500"></span>
+                              <strong>Parte Verde:</strong> Horas usadas nos horários permitidos (em conformidade)
+                            </p>
+                          </div>
+
+                          <div className="space-y-2 bg-red-50 p-4 rounded-lg border border-red-200">
+                            <p className="flex items-center gap-2">
+                              <span className="w-4 h-4 rounded-full bg-red-500"></span>
+                              <strong>Parte Vermelha:</strong> Horas usadas fora dos horários permitidos (violações)
+                            </p>
+                          </div>
+
+                          <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+                            <p className="text-sm text-amber-900">
+                              <strong>💡 Exemplo prático:</strong> Se você permitiu uso das 14h às 17h (3 horas), mas seu filho usou das 14h às 18h (4 horas), o gráfico mostrará 3 horas em verde (permitido) e 1 hora em vermelho (18h foi fora do permitido).
+                            </p>
+                          </div>
+
+                          <p className="text-gray-600 text-sm">
+                            <strong>Objetivo:</strong> Quanto mais verde aparecer, melhor está a conformidade com as regras estabelecidas. Se houver muito vermelho, é hora de conversar sobre respeitar os combinados.
+                          </p>
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              </div>
+              
+              <div className="flex flex-col items-center">
+                <ResponsiveContainer width="100%" height={300}>
+                  <PieChart>
+                    <Pie
+                      data={compliancePieData}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      label={({ name, value, percent }) => 
+                        `${name}: ${value} ${value === 1 ? 'hora' : 'horas'} (${(percent * 100).toFixed(0)}%)`
+                      }
+                      outerRadius={100}
+                      fill="#8884d8"
+                      dataKey="value"
+                    >
+                      {compliancePieData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                    <Tooltip 
+                      formatter={(value: number) => `${value} ${value === 1 ? 'hora' : 'horas'}`}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+                
+                <div className="flex gap-6 mt-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-green-500"></div>
+                    <span className="text-sm text-gray-600">Dentro do Permitido</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-red-500"></div>
+                    <span className="text-sm text-gray-600">Fora do Permitido</span>
+                  </div>
+                </div>
+              </div>
             </Card>
           )}
 
