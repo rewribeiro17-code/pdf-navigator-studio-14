@@ -64,6 +64,9 @@ src/
   - Added missing subtitle for Etapa 3: "Preenchendo o tempo com experiências significativas"
   - Fixed navigation button text from hardcoded "Conclusão" to dynamic "Próximo Capítulo"
   - Added safe rendering validation for chapter subtitles
+- **Conclusion Page Enhancement**: 
+  - Added "Início" button on the right side of navigation in Conclusion page
+  - Button redirects users back to main dashboard for easy navigation
 
 ## Previous Changes (Sep 30, 2025)
 
