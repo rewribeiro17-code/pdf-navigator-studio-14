@@ -67,6 +67,12 @@ src/
 - **Conclusion Page Enhancement**: 
   - Added "Início" button on the right side of navigation in Conclusion page
   - Button redirects users back to main dashboard for easy navigation
+- **Weekly Reports Chart Enhancement**:
+  - Transformed line chart into pie chart for better visual understanding
+  - Shows "Tempo Usado" vs "Tempo Disponível" in weekly view
+  - Added "Como funciona o gráfico?" help button with clear explanation dialog
+  - Used simple, accessible language in explanations with practical examples
+  - Visual legend with color indicators for easy interpretation
 
 ## Previous Changes (Sep 30, 2025)
 
