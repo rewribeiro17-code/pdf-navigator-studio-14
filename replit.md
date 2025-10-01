@@ -74,7 +74,10 @@ src/
   - Used simple, accessible language in explanations with practical examples (non-technical parents)
   - Visual legends with color indicators for easy interpretation
   - Contextualized tooltips showing hours/minutes with proper formatting
-  - Added helpful empty state message when compliance chart has no data, guiding users to configure allowed hours
+  - **Smart Empty State Logic**: Different messages based on context:
+    - No daily logs → "Registre as observações diárias" with CTA to daily log form
+    - Logs exist but no allowed hours → "Configure os horários permitidos" with CTA to profile edit
+    - Guides users to the exact next action needed
 
 ## Previous Changes (Sep 30, 2025)
 
