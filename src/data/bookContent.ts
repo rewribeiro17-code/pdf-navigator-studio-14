@@ -342,6 +342,7 @@ Durante esta etapa, você perceberá que a resistência inicial começará a dim
     {
       id: "stage3",
       title: "Etapa 3: Substituição por Atividades",
+      subtitle: "Preenchendo o tempo com experiências significativas",
       content: `🔄 **O segredo está na substituição inteligente!** Não basta apenas "tirar" o celular - é preciso oferecer alternativas ainda mais atrativas. O cérebro busca dopamina, e nossa missão é direcioná-lo para experiências reais e enriquecedoras que promovam conexão, criatividade e bem-estar físico.
 
 ⚡ **Estratégia-chave:** Comece pelas preferências da criança. Uma transição suave gera menos resistência e mais engajamento duradouro.`,

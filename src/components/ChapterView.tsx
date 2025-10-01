@@ -40,7 +40,7 @@ const ChapterView: React.FC<ChapterViewProps> = ({
         <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           {chapter.title}
         </h1>
-        {chapter.subtitle}
+        {chapter.subtitle && <p className="text-lg text-muted-foreground">{chapter.subtitle}</p>}
         
         <div className="flex items-center gap-4 mt-4">
           
@@ -100,7 +100,7 @@ const ChapterView: React.FC<ChapterViewProps> = ({
           </Button> : <div />}
         
         {nextChapterId && <Button onClick={() => navigate(`/app/${nextChapterId}`)} className="bg-gradient-to-r from-primary to-primary-glow hover:opacity-90">
-            Conclusão
+            Próximo Capítulo
             <ArrowRight className="h-4 w-4 ml-2" />
           </Button>}
       </div>
