@@ -74,6 +74,7 @@ src/
   - Used simple, accessible language in explanations with practical examples (non-technical parents)
   - Visual legends with color indicators for easy interpretation
   - Contextualized tooltips showing hours/minutes with proper formatting
+  - Added helpful empty state message when compliance chart has no data, guiding users to configure allowed hours
 
 ## Previous Changes (Sep 30, 2025)
 

@@ -452,12 +452,12 @@ const WeeklyReports: React.FC = () => {
           )}
 
           {/* Gráfico Comparativo: Horários Permitidos vs Reais */}
-          {compliancePieData.length > 0 && (
+          {selectedMember && (
             <Card className="p-6" data-testid="card-comparison-chart">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <h3 className="text-xl font-bold">
-                    Horários Permitidos vs Horários Reais de Uso
+                    Conformidade de Horários
                   </h3>
                   <Dialog>
                     <DialogTrigger asChild>
@@ -469,34 +469,36 @@ const WeeklyReports: React.FC = () => {
                     <DialogContent className="max-w-lg">
                       <DialogHeader>
                         <DialogTitle>Como entender o gráfico de conformidade?</DialogTitle>
-                        <DialogDescription className="space-y-3 pt-4 text-base">
-                          <p className="text-gray-700">
-                            Este gráfico mostra <strong>quantas horas do uso estão dentro ou fora dos horários permitidos</strong> que você configurou.
-                          </p>
-                          
-                          <div className="space-y-2 bg-green-50 p-4 rounded-lg border border-green-200">
-                            <p className="flex items-center gap-2">
-                              <span className="w-4 h-4 rounded-full bg-green-500"></span>
-                              <strong>Parte Verde:</strong> Horas usadas nos horários permitidos (em conformidade)
+                        <DialogDescription asChild>
+                          <div className="space-y-3 pt-4 text-base">
+                            <p className="text-gray-700">
+                              Este gráfico mostra <strong>quantas horas do uso estão dentro ou fora dos horários permitidos</strong> que você configurou.
+                            </p>
+                            
+                            <div className="space-y-2 bg-green-50 p-4 rounded-lg border border-green-200">
+                              <p className="flex items-center gap-2">
+                                <span className="w-4 h-4 rounded-full bg-green-500"></span>
+                                <strong>Parte Verde:</strong> Horas usadas nos horários permitidos (em conformidade)
+                              </p>
+                            </div>
+
+                            <div className="space-y-2 bg-red-50 p-4 rounded-lg border border-red-200">
+                              <p className="flex items-center gap-2">
+                                <span className="w-4 h-4 rounded-full bg-red-500"></span>
+                                <strong>Parte Vermelha:</strong> Horas usadas fora dos horários permitidos (violações)
+                              </p>
+                            </div>
+
+                            <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+                              <p className="text-sm text-amber-900">
+                                <strong>💡 Exemplo prático:</strong> Se você permitiu uso das 14h às 17h (3 horas), mas seu filho usou das 14h às 18h (4 horas), o gráfico mostrará 3 horas em verde (permitido) e 1 hora em vermelho (18h foi fora do permitido).
+                              </p>
+                            </div>
+
+                            <p className="text-gray-600 text-sm">
+                              <strong>Objetivo:</strong> Quanto mais verde aparecer, melhor está a conformidade com as regras estabelecidas. Se houver muito vermelho, é hora de conversar sobre respeitar os combinados.
                             </p>
                           </div>
-
-                          <div className="space-y-2 bg-red-50 p-4 rounded-lg border border-red-200">
-                            <p className="flex items-center gap-2">
-                              <span className="w-4 h-4 rounded-full bg-red-500"></span>
-                              <strong>Parte Vermelha:</strong> Horas usadas fora dos horários permitidos (violações)
-                            </p>
-                          </div>
-
-                          <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
-                            <p className="text-sm text-amber-900">
-                              <strong>💡 Exemplo prático:</strong> Se você permitiu uso das 14h às 17h (3 horas), mas seu filho usou das 14h às 18h (4 horas), o gráfico mostrará 3 horas em verde (permitido) e 1 hora em vermelho (18h foi fora do permitido).
-                            </p>
-                          </div>
-
-                          <p className="text-gray-600 text-sm">
-                            <strong>Objetivo:</strong> Quanto mais verde aparecer, melhor está a conformidade com as regras estabelecidas. Se houver muito vermelho, é hora de conversar sobre respeitar os combinados.
-                          </p>
                         </DialogDescription>
                       </DialogHeader>
                     </DialogContent>
@@ -504,42 +506,82 @@ const WeeklyReports: React.FC = () => {
                 </div>
               </div>
               
-              <div className="flex flex-col items-center">
-                <ResponsiveContainer width="100%" height={300}>
-                  <PieChart>
-                    <Pie
-                      data={compliancePieData}
-                      cx="50%"
-                      cy="50%"
-                      labelLine={false}
-                      label={({ name, value, percent }) => 
-                        `${name}: ${value} ${value === 1 ? 'hora' : 'horas'} (${(percent * 100).toFixed(0)}%)`
-                      }
-                      outerRadius={100}
-                      fill="#8884d8"
-                      dataKey="value"
-                    >
-                      {compliancePieData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip 
-                      formatter={(value: number) => `${value} ${value === 1 ? 'hora' : 'horas'}`}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
-                
-                <div className="flex gap-6 mt-4">
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-green-500"></div>
-                    <span className="text-sm text-gray-600">Dentro do Permitido</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-red-500"></div>
-                    <span className="text-sm text-gray-600">Fora do Permitido</span>
+              {compliancePieData.length > 0 ? (
+                <div className="flex flex-col items-center">
+                  <ResponsiveContainer width="100%" height={300}>
+                    <PieChart>
+                      <Pie
+                        data={compliancePieData}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        label={({ name, value, percent }) => 
+                          `${name}: ${value} ${value === 1 ? 'hora' : 'horas'} (${(percent * 100).toFixed(0)}%)`
+                        }
+                        outerRadius={100}
+                        fill="#8884d8"
+                        dataKey="value"
+                      >
+                        {compliancePieData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.color} />
+                        ))}
+                      </Pie>
+                      <Tooltip 
+                        formatter={(value: number) => `${value} ${value === 1 ? 'hora' : 'horas'}`}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
+                  
+                  <div className="flex gap-6 mt-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full bg-green-500"></div>
+                      <span className="text-sm text-gray-600">Dentro do Permitido</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full bg-red-500"></div>
+                      <span className="text-sm text-gray-600">Fora do Permitido</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 text-center">
+                  {dailyLogsForMember.length === 0 ? (
+                    <>
+                      <CalendarPlus className="h-12 w-12 mx-auto mb-3 text-amber-600" />
+                      <h4 className="font-semibold text-amber-900 mb-2">Registre as observações diárias</h4>
+                      <p className="text-sm text-amber-800 mb-4">
+                        Para visualizar o gráfico de conformidade, comece registrando o uso diário de {selectedMember.name}.
+                      </p>
+                      <Button 
+                        onClick={() => navigate(`/premium/daily-log?memberId=${selectedMember.id}`)}
+                        variant="default"
+                        size="sm"
+                        data-testid="button-register-day-empty"
+                      >
+                        <CalendarPlus className="h-4 w-4 mr-2" />
+                        Registrar Dia
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Clock className="h-12 w-12 mx-auto mb-3 text-amber-600" />
+                      <h4 className="font-semibold text-amber-900 mb-2">Configure os horários permitidos</h4>
+                      <p className="text-sm text-amber-800 mb-4">
+                        Para visualizar o gráfico de conformidade, configure os horários permitidos no perfil de {selectedMember.name}.
+                      </p>
+                      <Button 
+                        onClick={() => navigate(`/premium/family/${selectedMember.id}`)}
+                        variant="default"
+                        size="sm"
+                        data-testid="button-configure-hours"
+                      >
+                        <Target className="h-4 w-4 mr-2" />
+                        Configurar Horários
+                      </Button>
+                    </>
+                  )}
+                </div>
+              )}
             </Card>
           )}
 
@@ -578,31 +620,33 @@ const WeeklyReports: React.FC = () => {
                   <DialogContent className="max-w-lg">
                     <DialogHeader>
                       <DialogTitle>Como entender o gráfico?</DialogTitle>
-                      <DialogDescription className="space-y-3 pt-4 text-base">
-                        <p className="text-gray-700">
-                          Este gráfico mostra de forma visual <strong>quanto tempo seu filho usou o celular</strong> comparado com o tempo que estava disponível.
-                        </p>
-                        
-                        <div className="space-y-2 bg-blue-50 p-4 rounded-lg">
-                          <p className="flex items-center gap-2">
-                            <span className="w-4 h-4 rounded-full bg-blue-500"></span>
-                            <strong>Parte Azul:</strong> Tempo que foi usado no celular
+                      <DialogDescription asChild>
+                        <div className="space-y-3 pt-4 text-base">
+                          <p className="text-gray-700">
+                            Este gráfico mostra de forma visual <strong>quanto tempo seu filho usou o celular</strong> comparado com o tempo que estava disponível.
                           </p>
-                          <p className="flex items-center gap-2">
-                            <span className="w-4 h-4 rounded-full bg-gray-300"></span>
-                            <strong>Parte Cinza:</strong> Tempo que ainda estava livre
+                          
+                          <div className="space-y-2 bg-blue-50 p-4 rounded-lg">
+                            <p className="flex items-center gap-2">
+                              <span className="w-4 h-4 rounded-full bg-blue-500"></span>
+                              <strong>Parte Azul:</strong> Tempo que foi usado no celular
+                            </p>
+                            <p className="flex items-center gap-2">
+                              <span className="w-4 h-4 rounded-full bg-gray-300"></span>
+                              <strong>Parte Cinza:</strong> Tempo que ainda estava livre
+                            </p>
+                          </div>
+
+                          <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+                            <p className="text-sm text-amber-900">
+                              <strong>💡 Exemplo prático:</strong> Se o limite é 2 horas por dia (840 minutos na semana) e seu filho usou 420 minutos, o gráfico mostrará metade azul (usado) e metade cinza (disponível).
+                            </p>
+                          </div>
+
+                          <p className="text-gray-600 text-sm">
+                            Quanto maior a parte azul, mais tempo foi usado. Use esse visual para conversar com seu filho sobre o uso equilibrado do celular.
                           </p>
                         </div>
-
-                        <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
-                          <p className="text-sm text-amber-900">
-                            <strong>💡 Exemplo prático:</strong> Se o limite é 2 horas por dia (840 minutos na semana) e seu filho usou 420 minutos, o gráfico mostrará metade azul (usado) e metade cinza (disponível).
-                          </p>
-                        </div>
-
-                        <p className="text-gray-600 text-sm">
-                          Quanto maior a parte azul, mais tempo foi usado. Use esse visual para conversar com seu filho sobre o uso equilibrado do celular.
-                        </p>
                       </DialogDescription>
                     </DialogHeader>
                   </DialogContent>
