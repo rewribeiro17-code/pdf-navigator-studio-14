@@ -570,7 +570,7 @@ const WeeklyReports: React.FC = () => {
                         Para visualizar o gráfico de conformidade, configure os horários permitidos no perfil de {selectedMember.name}.
                       </p>
                       <Button 
-                        onClick={() => navigate(`/premium/family/${selectedMember.id}`)}
+                        onClick={() => navigate(`/premium/family/edit/${selectedMember.id}`)}
                         variant="default"
                         size="sm"
                         data-testid="button-configure-hours"
