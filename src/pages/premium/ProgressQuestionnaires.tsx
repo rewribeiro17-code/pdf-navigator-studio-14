@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -24,10 +24,13 @@ const WeeklyReports: React.FC = () => {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResult, setShowResult] = useState(false);
   const [currentResult, setCurrentResult] = useState<QuestionnaireResponse | null>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (showResult) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (showResult && resultsRef.current) {
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({ behavior: 'auto', block: 'start' });
+      }, 100);
     }
   }, [showResult]);
 
@@ -222,7 +225,7 @@ const WeeklyReports: React.FC = () => {
 
         {/* Results */}
         {showResult && currentResult && (
-          <div className="space-y-6">
+          <div ref={resultsRef} className="space-y-6">
             {/* Score Card */}
             <Card className={`p-8 border-2 ${getLevelColor(currentResult.level)}`} data-testid="card-result">
               <div className="text-center mb-6">
