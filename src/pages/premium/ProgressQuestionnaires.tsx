@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -24,6 +24,12 @@ const WeeklyReports: React.FC = () => {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResult, setShowResult] = useState(false);
   const [currentResult, setCurrentResult] = useState<QuestionnaireResponse | null>(null);
+
+  useEffect(() => {
+    if (showResult) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [showResult]);
 
   const selectedMember = familyMembers.find(m => m.id === selectedMemberId);
   const selectedQuestionnaire = questionnaires.find(q => q.id === selectedQuestionnaireId);
