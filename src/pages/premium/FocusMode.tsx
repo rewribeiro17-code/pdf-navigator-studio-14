@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { ArrowLeft, Play, Pause, Square, Clock, Target, Brain, TrendingUp, Award, Lightbulb } from 'lucide-react';
+import { ArrowLeft, Play, Pause, Square, Clock, Target, Brain, TrendingUp, Award, Lightbulb, Bell, BellOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useScreenTimeStorage } from '@/hooks/useScreenTimeStorage';
 import { useFocusModeStorage } from '@/hooks/useFocusModeStorage';
@@ -31,6 +31,73 @@ const FocusMode: React.FC = () => {
   const [timeRemaining, setTimeRemaining] = useState<number>(0);
   const [showCompletionDialog, setShowCompletionDialog] = useState(false);
   const [sessionProductivity, setSessionProductivity] = useState<number>(5);
+  const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default');
+
+  // Request notification permission on component mount
+  useEffect(() => {
+    if ('Notification' in window) {
+      setNotificationPermission(Notification.permission);
+      
+      if (Notification.permission === 'default') {
+        Notification.requestPermission().then(permission => {
+          setNotificationPermission(permission);
+        });
+      }
+    }
+  }, []);
+
+  // Function to play notification sound
+  const playNotificationSound = () => {
+    try {
+      // Create a simple beep using Web Audio API
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.frequency.value = 800; // 800Hz frequency
+      oscillator.type = 'sine';
+      
+      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+      
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.5);
+    } catch (error) {
+      console.error('Error playing notification sound:', error);
+    }
+  };
+
+  // Function to send browser notification
+  const sendNotification = () => {
+    if (!selectedMember) return;
+    
+    // Play sound
+    playNotificationSound();
+    
+    // Vibrate on mobile devices
+    if ('vibrate' in navigator) {
+      navigator.vibrate([200, 100, 200]);
+    }
+    
+    // Show browser notification
+    if ('Notification' in window && Notification.permission === 'granted') {
+      const notification = new Notification('⏰ Tempo Concluído!', {
+        body: `${selectedMember.name} terminou a tarefa no Modo Foco!`,
+        icon: '/favicon.ico',
+        badge: '/favicon.ico',
+        tag: 'focus-mode-complete',
+        requireInteraction: true
+      });
+
+      notification.onclick = () => {
+        window.focus();
+        notification.close();
+      };
+    }
+  };
 
   // Update active session and timer
   useEffect(() => {
@@ -54,7 +121,8 @@ const FocusMode: React.FC = () => {
       const timer = setTimeout(() => {
         setTimeRemaining(prev => {
           if (prev <= 1) {
-            // Session completed
+            // Session completed - send notification
+            sendNotification();
             setShowCompletionDialog(true);
             return 0;
           }
@@ -173,14 +241,28 @@ const FocusMode: React.FC = () => {
       </Button>
 
       <div className="mb-8">
-        <div className="flex items-center mb-4">
-          <Brain className="h-8 w-8 text-purple-600 mr-3" />
-          <div>
-            <h1 className="text-3xl font-bold">Modo Foco</h1>
-            <p className="text-muted-foreground">
-              Sessões focadas para toda a família
-            </p>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center">
+            <Brain className="h-8 w-8 text-purple-600 mr-3" />
+            <div>
+              <h1 className="text-3xl font-bold">Modo Foco</h1>
+              <p className="text-muted-foreground">
+                Sessões focadas para toda a família
+              </p>
+            </div>
           </div>
+          
+          {notificationPermission === 'granted' ? (
+            <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+              <Bell className="h-3 w-3 mr-1" />
+              Notificações ativas
+            </Badge>
+          ) : (
+            <Badge variant="outline" className="bg-amber-50 text-amber-700 border-amber-200">
+              <BellOff className="h-3 w-3 mr-1" />
+              Notificações desativadas
+            </Badge>
+          )}
         </div>
 
         <div className="mb-6">
