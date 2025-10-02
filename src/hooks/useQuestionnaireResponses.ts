@@ -20,10 +20,7 @@ export function useQuestionnaireResponses() {
 
   const saveResponse = (response: QuestionnaireResponse) => {
     setResponses((prev) => {
-      const filtered = prev.filter(
-        (r) => !(r.questionnaireId === response.questionnaireId && r.familyMemberId === response.familyMemberId)
-      );
-      const updated = [...filtered, response];
+      const updated = [...prev, response];
       localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
       return updated;
     });
