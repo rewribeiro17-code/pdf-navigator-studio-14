@@ -70,6 +70,14 @@ const WeeklyReports: React.FC = () => {
     setSelectedQuestionnaireId('');
   };
 
+  const handleBackToStart = () => {
+    setAnswers({});
+    setShowResult(false);
+    setCurrentResult(null);
+    setSelectedQuestionnaireId('');
+    setSelectedMemberId('');
+  };
+
   const allQuestionsAnswered = selectedQuestionnaire 
     ? selectedQuestionnaire.questions.every(q => answers[q.id])
     : false;
@@ -100,7 +108,7 @@ const WeeklyReports: React.FC = () => {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => navigate('/premium')}
+            onClick={handleBackToStart}
             className="gap-2"
             data-testid="button-back"
           >
