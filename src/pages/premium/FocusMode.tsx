@@ -29,6 +29,7 @@ const FocusMode: React.FC = () => {
   const [selectedTemplate, setSelectedTemplate] = useState<FocusTemplate | null>(null);
   const [activeSession, setActiveSession] = useState<FocusSession | null>(null);
   const [timeRemaining, setTimeRemaining] = useState<number>(0);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
   const [showCompletionDialog, setShowCompletionDialog] = useState(false);
   const [sessionProductivity, setSessionProductivity] = useState<number>(5);
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default');
@@ -117,7 +118,7 @@ const FocusMode: React.FC = () => {
 
   // Timer countdown
   useEffect(() => {
-    if (activeSession && timeRemaining > 0) {
+    if (activeSession && timeRemaining > 0 && !isPaused) {
       const timer = setTimeout(() => {
         setTimeRemaining(prev => {
           if (prev <= 1) {
@@ -132,7 +133,7 @@ const FocusMode: React.FC = () => {
 
       return () => clearTimeout(timer);
     }
-  }, [activeSession, timeRemaining]);
+  }, [activeSession, timeRemaining, isPaused]);
 
   const handleStartSession = (templateId: string) => {
     if (!selectedMemberId) return;
@@ -160,7 +161,12 @@ const FocusMode: React.FC = () => {
     
     setActiveSession(null);
     setTimeRemaining(0);
+    setIsPaused(false);
     setShowCompletionDialog(false);
+  };
+
+  const handlePauseSession = () => {
+    setIsPaused(!isPaused);
   };
 
   const formatTime = (seconds: number): string => {
@@ -309,12 +315,21 @@ const FocusMode: React.FC = () => {
                 <div className="flex gap-3 justify-center">
                   <Button
                     variant="outline"
-                    onClick={() => handleEndSession(false)}
+                    onClick={handlePauseSession}
                     className="flex-1"
                     data-testid="button-pause-session"
                   >
-                    <Pause className="h-4 w-4 mr-2" />
-                    Pausar
+                    {isPaused ? (
+                      <>
+                        <Play className="h-4 w-4 mr-2" />
+                        Retomar
+                      </>
+                    ) : (
+                      <>
+                        <Pause className="h-4 w-4 mr-2" />
+                        Pausar
+                      </>
+                    )}
                   </Button>
                   <Button
                     variant="destructive"

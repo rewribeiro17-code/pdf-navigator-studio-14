@@ -57,7 +57,11 @@ src/
 
 ## Recent Changes (Oct 2, 2025)
 
-### Modo Foco - Notification System
+### Modo Foco - Complete Feature Set
+- **Pause/Resume Functionality**: Fixed pause button to actually pause the timer instead of ending the session
+  - Dynamic button text: "Pausar" when running, "Retomar" when paused
+  - Timer maintains remaining time when paused
+  - Resume continues from where it was paused
 - **Browser Notifications**: Parents receive notifications when focus timer completes
   - Shows "⏰ Tempo Concluído! [Child Name] terminou a tarefa no Modo Foco!"
   - Works even when browser is in background or minimized
@@ -75,6 +79,7 @@ src/
   - Web Audio API for generated beep sound (no audio files needed)
   - Vibration API for mobile haptic feedback
   - Requires HTTPS (provided by Replit)
+  - isPaused state controls timer countdown
 
 ### Questionários de Evolução - Complete Redesign
 - **Complete Transformation from Complex Charts to Simple Questionnaires**
