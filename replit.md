@@ -57,6 +57,25 @@ src/
 
 ## Recent Changes (Oct 2, 2025)
 
+### Modo Foco - Notification System
+- **Browser Notifications**: Parents receive notifications when focus timer completes
+  - Shows "⏰ Tempo Concluído! [Child Name] terminou a tarefa no Modo Foco!"
+  - Works even when browser is in background or minimized
+  - Automatic permission request on first visit
+  - Visual indicator badge showing notification status (active/inactive)
+- **Sound Alert**: Plays pleasant 800Hz beep tone when timer ends (0.5s duration)
+- **Mobile Vibration**: Devices vibrate with pattern [200ms, 100ms, 200ms] on completion
+- **User Experience**:
+  - Notification permission requested automatically but non-intrusively
+  - All alerts work together (notification + sound + vibration)
+  - Clicking notification brings app to focus
+  - Works across all modern browsers (Chrome, Firefox, Safari, Edge)
+- **Technical Implementation**:
+  - Uses standard Notification API for browser notifications
+  - Web Audio API for generated beep sound (no audio files needed)
+  - Vibration API for mobile haptic feedback
+  - Requires HTTPS (provided by Replit)
+
 ### Questionários de Evolução - Complete Redesign
 - **Complete Transformation from Complex Charts to Simple Questionnaires**
   - Replaced complex chart-based reports with simple, intuitive questionnaire system
