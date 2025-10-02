@@ -131,7 +131,7 @@ src/
 ### Premium System Architecture
 - **Premium System Simplification**: Reduced from 5 to 2 essential tools based on user feedback
 - **Removed Tools**: Monitor de Tempo de Tela, Alertas Inteligentes, Metas Familiares (excesso de informação)
-- **Kept Tools**: Modo Foco (Focus Mode) e Relatórios Semanais (Weekly Reports)
+- **Kept Tools**: Modo Foco (Focus Mode) e Questionários de Evolução (Progress Questionnaires)
 - **Dashboard Reorganization**: Conclusão moved after Etapa 4, Bônus and Premium moved down
 - **Sidebar Reorganization**: Logical order (Etapas → Conclusão → Bônus → Premium)
 - **Family Management Page**: Dedicated page at /premium/family with clickable cards

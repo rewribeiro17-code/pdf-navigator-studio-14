@@ -75,19 +75,19 @@ const PremiumDashboard: React.FC = () => {
           </div>
         </Card>
 
-        {/* Relatórios Semanais */}
+        {/* Questionários de Evolução */}
         <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-green-200 bg-gradient-to-br from-card to-green-50"
-              data-testid="card-weekly-reports">
+              data-testid="card-questionnaires">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-4">
               <BarChart3 className="h-6 w-6 text-green-600" aria-hidden="true" />
             </div>
-            <h3 className="text-lg font-bold mb-2 text-green-600">Relatórios Semanais</h3>
+            <h3 className="text-lg font-bold mb-2 text-green-600">Questionários de Evolução</h3>
             <p className="text-muted-foreground text-sm mb-4">
-              Análise detalhada do progresso e conquistas da família
+              Avalie o progresso em cada etapa do método com questionários simples
             </p>
-            <Button size="sm" className="bg-green-600 hover:bg-green-700" onClick={() => navigate('/premium/weekly-reports')} data-testid="button-weekly-reports">
-              Ver Relatórios
+            <Button size="sm" className="bg-green-600 hover:bg-green-700" onClick={() => navigate('/premium/questionnaires')} data-testid="button-questionnaires">
+              Responder Questionários
             </Button>
           </div>
         </Card>
