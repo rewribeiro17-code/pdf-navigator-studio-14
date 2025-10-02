@@ -29,7 +29,7 @@ const WeeklyReports: React.FC = () => {
   useEffect(() => {
     if (showResult && resultsRef.current) {
       setTimeout(() => {
-        resultsRef.current?.scrollIntoView({ behavior: 'auto', block: 'start' });
+        resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
     }
   }, [showResult]);
