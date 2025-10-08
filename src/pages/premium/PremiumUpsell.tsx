@@ -115,11 +115,9 @@ const PremiumUpsell: React.FC = () => {
       </div>
 
       {/* CTA Principal */}
-      <Card className="p-8 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-center">
-        <div className="mb-6">
-          <p className="text-3xl font-bold mb-2">Por apenas</p>
-          <p className="text-5xl font-black">R$ 14,90</p>
-          <p className="text-xl opacity-90">/mês</p>
+      <Card className="p-6 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-center">
+        <div className="mb-4">
+          <p className="text-2xl font-bold">Por Apenas R$14,90 tenha acesso vitalicio</p>
         </div>
         
         <Button 
@@ -128,7 +126,7 @@ const PremiumUpsell: React.FC = () => {
           className="bg-white text-yellow-600 hover:bg-gray-100 text-xl font-bold py-6 px-12 mb-4"
           data-testid="premium-checkout-button"
         >
-          🛒 QUERO SER PREMIUM AGORA! 🛒
+          QUERO SER PREMIUM AGORA!
         </Button>
         
         <p className="text-sm opacity-90">
