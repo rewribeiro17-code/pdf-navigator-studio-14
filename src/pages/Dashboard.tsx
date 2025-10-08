@@ -180,16 +180,16 @@ const Dashboard: React.FC = () => {
       </Card>
 
       {/* Premium CTA */}
-      <Card className="p-8 bg-gradient-to-r from-yellow-50 to-yellow-100 dark:from-yellow-950 dark:to-yellow-900 border-yellow-300 dark:border-yellow-700">
+      <Card className="p-6 bg-gradient-to-r from-yellow-50 to-yellow-100 dark:from-yellow-950 dark:to-yellow-900 border-yellow-300 dark:border-yellow-700">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 mb-4">
-            <Crown className="h-8 w-8 text-white" />
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 mb-3">
+            <Crown className="h-6 w-6 text-white" />
           </div>
-          <h2 className="text-2xl font-bold mb-2">Desbloqueie o Poder Completo</h2>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+          <h2 className="text-xl font-bold mb-2">Desbloqueie a Versão Premium</h2>
+          <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
             {user?.isPremium 
               ? 'Você tem acesso premium! Explore todas as ferramentas exclusivas.' 
-              : 'Acesse ferramentas premium de monitoramento, relatórios semanais, alertas inteligentes, metas familiares e modo foco.'}
+              : 'Acesse ferramentas fundamentais na reeducação digital de seus filhos.'}
           </p>
           <Button 
             size="lg"
