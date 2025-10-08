@@ -38,7 +38,7 @@ const PremiumUpsell: React.FC = () => {
           Tenha acesso a ferramentas fundamentais na
         </p>
         <p className="text-xl font-semibold text-secondary">
-          reeducação digital dos seus filhos
+          reeducação digital dos seus filhos!
         </p>
       </div>
 
