@@ -117,7 +117,7 @@ const PremiumUpsell: React.FC = () => {
       {/* CTA Principal */}
       <Card className="p-6 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-center">
         <div className="mb-4">
-          <p className="text-2xl font-bold">Por Apenas R$14,90 tenha acesso vitalicio</p>
+          <p className="text-2xl font-bold">Por Apenas R$14,90 Tenha Acesso Vitalicio!</p>
         </div>
         
         <Button 
