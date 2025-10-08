@@ -610,7 +610,7 @@ Vamos juntos mudar a vida das suas crianças para melhor!`,
     {
       id: "mindfulness",
       title: "Atenção Plena em Família",
-      description: "Técnicas de mindfulness para praticar com crianças e fortalecer conexões familiares",
+      description: "Técnicas de Mindfulness Para a Família Praticar",
       icon: "🧘",
       pdfUrl: "/pdfs/mindfulness-familia.pdf"
     },
