@@ -159,7 +159,7 @@ const Dashboard: React.FC = () => {
             <p className="text-sm text-muted-foreground">3 e-books adicionais para complementar sua jornada</p>
           </div>
         </div>
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-6">
           {bookContent.bonusBooks.map((book) => (
             <Button
               key={book.id}
