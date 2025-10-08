@@ -55,6 +55,28 @@ src/
 - **Smart Premium Button**: Shows upsell for free users, dashboard for premium users
 - Protected routes requiring authentication
 
+## Recent Changes (Oct 8, 2025)
+
+### Authentication System - Password-Based Access
+- **Unique Password System**: Implemented password-based authentication with two tiers
+  - Users enter email + password (instead of individual accounts)
+  - **SENHA_APP** (desintox2024): Normal access to basic content
+  - **SENHA_PREMIUM** (desintoxpremium2024): Premium access including Focus Mode and Progress Questionnaires
+- **Implementation**:
+  - Passwords stored as Replit Secrets (SENHA_APP, SENHA_PREMIUM)
+  - Passed to Vite via .env file with VITE_ prefix
+  - Validation in AuthContext checks password and assigns premium status accordingly
+  - Clean login screen without demo text
+- **User Experience**:
+  - Simple login with email + password
+  - Same interface for both user types
+  - Password determines access level (basic vs premium)
+  - Can change passwords anytime via Replit Secrets without code changes
+- **Portability**: 
+  - .env file created for local/other platform deployment
+  - Not locked to Replit - easily portable to any hosting platform
+  - Just need to set environment variables in deployment platform
+
 ## Recent Changes (Oct 2, 2025)
 
 ### Modo Foco - Complete Feature Set
