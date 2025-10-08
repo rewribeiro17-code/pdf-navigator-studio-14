@@ -121,11 +121,6 @@ const Login: React.FC = () => {
           </Button>
         </form>
 
-        <div className="mt-6 text-center">
-          <p className="text-sm text-muted-foreground">
-            Use qualquer e-mail e senha para acessar a demonstração
-          </p>
-        </div>
       </Card>
     </div>
   );
