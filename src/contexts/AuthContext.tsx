@@ -32,25 +32,41 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = async (email: string, password: string) => {
-    // Simple mock authentication
     setIsLoading(true);
     
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    // For demo purposes, any email/password combo works
-    // Users with "premium" in email get premium access for testing
-    const isPremium = email.toLowerCase().includes('premium');
+    // Get passwords from environment variables
+    const senhaApp = import.meta.env.VITE_SENHA_APP;
+    const senhaPremium = import.meta.env.VITE_SENHA_PREMIUM;
     
-    const mockUser: User = {
+    // Validate password
+    let isPremium = false;
+    let isValid = false;
+    
+    if (password === senhaPremium) {
+      isPremium = true;
+      isValid = true;
+    } else if (password === senhaApp) {
+      isPremium = false;
+      isValid = true;
+    }
+    
+    if (!isValid) {
+      setIsLoading(false);
+      throw new Error('Senha incorreta');
+    }
+    
+    const user: User = {
       id: '1',
       email,
       name: email.split('@')[0],
       isPremium,
     };
     
-    setUser(mockUser);
-    localStorage.setItem('user', JSON.stringify(mockUser));
+    setUser(user);
+    localStorage.setItem('user', JSON.stringify(user));
     setIsLoading(false);
   };
 
