@@ -75,14 +75,14 @@ const PremiumDashboard: React.FC = () => {
           </div>
         </Card>
 
-        {/* Questionários de Evolução */}
+        {/* Questionários de Progresso */}
         <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-green-200 bg-gradient-to-br from-card to-green-50"
               data-testid="card-questionnaires">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-4">
               <BarChart3 className="h-6 w-6 text-green-600" aria-hidden="true" />
             </div>
-            <h3 className="text-lg font-bold mb-2 text-green-600">Questionários de Evolução</h3>
+            <h3 className="text-lg font-bold mb-2 text-green-600">Questionários de Progresso</h3>
             <p className="text-muted-foreground text-sm mb-4">
               Avalie o progresso em cada etapa do método com questionários simples
             </p>
