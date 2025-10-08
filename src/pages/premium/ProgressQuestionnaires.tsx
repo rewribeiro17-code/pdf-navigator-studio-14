@@ -71,11 +71,7 @@ const WeeklyReports: React.FC = () => {
   };
 
   const handleBackToStart = () => {
-    setAnswers({});
-    setShowResult(false);
-    setCurrentResult(null);
-    setSelectedQuestionnaireId('');
-    setSelectedMemberId('');
+    navigate('/premium/dashboard');
   };
 
   const allQuestionsAnswered = selectedQuestionnaire 
