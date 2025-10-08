@@ -84,7 +84,7 @@ const PremiumUpsell: React.FC = () => {
             <div className="p-3 rounded-full bg-secondary/10 mr-4">
               <ClipboardCheck className="h-6 w-6 text-secondary" />
             </div>
-            <h3 className="text-xl font-bold text-secondary">Questionário de Progresso</h3>
+            <h3 className="text-xl font-bold text-secondary">Questionários de Progresso</h3>
           </div>
           <p className="text-muted-foreground mb-4">
             Sistema de avaliação do progresso educativo
