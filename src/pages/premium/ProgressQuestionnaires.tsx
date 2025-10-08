@@ -71,7 +71,7 @@ const WeeklyReports: React.FC = () => {
   };
 
   const handleBackToStart = () => {
-    navigate('/premium/dashboard');
+    navigate('/premium');
   };
 
   const allQuestionsAnswered = selectedQuestionnaire 
