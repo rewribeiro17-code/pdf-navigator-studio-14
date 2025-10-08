@@ -185,7 +185,9 @@ const Dashboard: React.FC = () => {
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 mb-3">
             <Crown className="h-6 w-6 text-white" />
           </div>
-          <h2 className="text-xl font-bold mb-2">Desbloqueie a Versão Premium</h2>
+          <h2 className="text-xl font-bold mb-2">
+            {user?.isPremium ? 'Área Premium' : 'Desbloqueie a Versão Premium'}
+          </h2>
           <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
             {user?.isPremium 
               ? 'Você tem acesso premium! Explore todas as ferramentas exclusivas.' 
