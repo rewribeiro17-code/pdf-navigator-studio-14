@@ -170,8 +170,8 @@ const Dashboard: React.FC = () => {
               <div className="flex items-start gap-3">
                 <span className="text-3xl">{book.icon}</span>
                 <div>
-                  <div className="font-semibold text-sm mb-1">{book.title}</div>
-                  <div className="text-xs text-muted-foreground">{book.description}</div>
+                  <div className="font-semibold text-sm mb-1 text-foreground hover:text-foreground">{book.title}</div>
+                  <div className="text-xs text-muted-foreground hover:text-muted-foreground">{book.description}</div>
                 </div>
               </div>
             </Button>

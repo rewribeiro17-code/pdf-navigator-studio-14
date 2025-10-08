@@ -610,21 +610,21 @@ Vamos juntos mudar a vida das suas crianças para melhor!`,
     {
       id: "mindfulness",
       title: "Atenção Plena em Família",
-      description: "Técnicas de Mindfulness Para a Família Praticar",
+      description: "Práticas de atenção plena para toda família",
       icon: "🧘",
       pdfUrl: "/pdfs/mindfulness-familia.pdf"
     },
     {
       id: "apps",
       title: "Guia de Apps e Jogos Educacionais",
-      description: "Os melhores aplicativos e jogos que realmente educam e desenvolvem habilidades",
+      description: "Apps e jogos que educam de verdade",
       icon: "📱",
       pdfUrl: "/pdfs/guia-apps-educacionais.pdf"
     },
     {
       id: "adhd",
       title: "TDAH e Telas",
-      description: "Estratégias específicas para crianças com TDAH no mundo digital",
+      description: "Guia para crianças com TDAH",
       icon: "🧠",
       pdfUrl: "/pdfs/tdah-telas.pdf"
     }
