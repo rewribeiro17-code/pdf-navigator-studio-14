@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Crown, CheckCircle, Monitor } from 'lucide-react';
+import { ArrowLeft, Crown, CheckCircle, Timer, ClipboardCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const PremiumUpsell: React.FC = () => {
@@ -43,41 +43,75 @@ const PremiumUpsell: React.FC = () => {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6 mb-8">
-        {/* Monitor de Tempo de Tela */}
+        {/* Modo Foco */}
         <Card className="p-6 border-2 border-yellow-200 bg-gradient-to-br from-card to-yellow-50">
           <div className="flex items-center mb-4">
-            <div className="p-3 rounded-full bg-blue-100 mr-4">
-              <Monitor className="h-6 w-6 text-blue-600" />
+            <div className="p-3 rounded-full bg-primary/10 mr-4">
+              <Timer className="h-6 w-6 text-primary" />
             </div>
-            <h3 className="text-xl font-bold text-blue-600">Monitor de Tempo de Tela</h3>
+            <h3 className="text-xl font-bold text-primary">Modo Foco</h3>
           </div>
           <p className="text-muted-foreground mb-4">
-            Dashboard em tempo real do uso familiar
+            Timer educativo com notificações completas
           </p>
           <ul className="space-y-2">
             <li className="flex items-center">
               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-              <span className="text-sm">Dashboard em tempo real da família</span>
+              <span className="text-sm">Templates por faixa etária (6-10, 11-14, 15-17 anos)</span>
             </li>
             <li className="flex items-center">
               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-              <span className="text-sm">Gráficos detalhados de uso por criança</span>
+              <span className="text-sm">Notificações do navegador para os pais</span>
             </li>
             <li className="flex items-center">
               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-              <span className="text-sm">Alertas automáticos de limites</span>
+              <span className="text-sm">Alerta sonoro ao concluir</span>
             </li>
             <li className="flex items-center">
               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-              <span className="text-sm">Metas personalizáveis por faixa etária</span>
+              <span className="text-sm">Vibração no celular</span>
             </li>
             <li className="flex items-center">
               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-              <span className="text-sm">Relatórios semanais de progresso</span>
+              <span className="text-sm">Pausar e retomar timer</span>
             </li>
           </ul>
         </Card>
 
+        {/* Questionário de Progresso */}
+        <Card className="p-6 border-2 border-yellow-200 bg-gradient-to-br from-card to-yellow-50">
+          <div className="flex items-center mb-4">
+            <div className="p-3 rounded-full bg-secondary/10 mr-4">
+              <ClipboardCheck className="h-6 w-6 text-secondary" />
+            </div>
+            <h3 className="text-xl font-bold text-secondary">Questionário de Progresso</h3>
+          </div>
+          <p className="text-muted-foreground mb-4">
+            Sistema de avaliação do progresso educativo
+          </p>
+          <ul className="space-y-2">
+            <li className="flex items-center">
+              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+              <span className="text-sm">4 questionários (um para cada etapa)</span>
+            </li>
+            <li className="flex items-center">
+              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+              <span className="text-sm">5 perguntas por questionário</span>
+            </li>
+            <li className="flex items-center">
+              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+              <span className="text-sm">Análise automática com pontuação 0-100%</span>
+            </li>
+            <li className="flex items-center">
+              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+              <span className="text-sm">Feedback personalizado por nível</span>
+            </li>
+            <li className="flex items-center">
+              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+              <span className="text-sm">Dicas práticas para melhorar</span>
+            </li>
+          </ul>
+        </Card>
       </div>
 
       {/* CTA Principal */}
