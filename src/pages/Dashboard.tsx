@@ -113,9 +113,9 @@ const Dashboard: React.FC = () => {
               onClick={() => navigate(`/app/${chapter.id}`)}
             >
               <div>
-                <div className="font-semibold">{chapter.title}</div>
+                <div className="font-semibold text-foreground hover:text-foreground">{chapter.title}</div>
                 {chapter.subtitle && (
-                  <div className="text-sm text-muted-foreground mt-1">
+                  <div className="text-sm text-muted-foreground hover:text-muted-foreground mt-1">
                     {chapter.subtitle}
                   </div>
                 )}
