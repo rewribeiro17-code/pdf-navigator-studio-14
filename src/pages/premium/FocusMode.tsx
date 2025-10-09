@@ -294,9 +294,6 @@ const FocusMode: React.FC = () => {
             <Card className="p-8 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
               <div className="text-center mb-6">
                 <h2 className="text-2xl font-bold mb-2">Sessão de Foco Ativa</h2>
-                <p className="text-muted-foreground">
-                  {selectedMember?.name} está em modo {activeSession.focusType}
-                </p>
               </div>
 
               <div className="max-w-md mx-auto">
