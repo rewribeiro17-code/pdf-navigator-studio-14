@@ -280,11 +280,6 @@ const FocusMode: React.FC = () => {
               {familyMembers.map((member) => (
                 <SelectItem key={member.id} value={member.id}>
                   {member.name} ({member.age} anos)
-                  {isInFocusMode(member.id) && (
-                    <Badge variant="outline" className="ml-2 bg-green-100 text-green-800">
-                      Em foco
-                    </Badge>
-                  )}
                 </SelectItem>
               ))}
             </SelectContent>
