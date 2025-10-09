@@ -320,7 +320,7 @@ const FocusMode: React.FC = () => {
                     {isPaused ? (
                       <>
                         <Play className="h-4 w-4 mr-2" />
-                        Retomar
+                        {timeRemaining === (activeSession?.plannedDuration || 0) * 60 ? 'Iniciar' : 'Retomar'}
                       </>
                     ) : (
                       <>
