@@ -107,17 +107,6 @@ const FocusMode: React.FC = () => {
     setIsPaused(false);
   }, [selectedMemberId]);
 
-  // Update active session timer
-  useEffect(() => {
-    if (activeSession) {
-      const startTime = new Date(activeSession.startTime);
-      const plannedEnd = new Date(startTime.getTime() + activeSession.plannedDuration * 60 * 1000);
-      const now = new Date();
-      const remaining = Math.max(0, Math.floor((plannedEnd.getTime() - now.getTime()) / 1000));
-      setTimeRemaining(remaining);
-    }
-  }, [activeSession]);
-
   // Timer countdown
   useEffect(() => {
     if (activeSession && timeRemaining > 0 && !isPaused) {
