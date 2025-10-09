@@ -148,6 +148,7 @@ const FocusMode: React.FC = () => {
       const template = focusTemplates.find(t => t.id === templateId);
       if (template) {
         setTimeRemaining(template.duration * 60);
+        setIsPaused(true); // Inicia pausado
       }
     } catch (error) {
       console.error('Error starting focus session:', error);
