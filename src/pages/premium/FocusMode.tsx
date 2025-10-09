@@ -166,14 +166,11 @@ const FocusMode: React.FC = () => {
   };
 
   const handleRestartSession = () => {
-    if (!activeSession || !selectedTemplate) return;
+    if (!selectedTemplate) return;
     
-    // End current session
-    endFocusSession(activeSession.id, false, sessionProductivity, 'Reiniciado pelo usuário');
-    
-    // Start new session with same template
-    handleStartSession(selectedTemplate.id);
-    setIsPaused(false);
+    // Reset timer to initial duration and pause
+    setTimeRemaining(selectedTemplate.duration * 60);
+    setIsPaused(true);
   };
 
   const handlePauseSession = () => {
