@@ -100,21 +100,23 @@ const FocusMode: React.FC = () => {
     }
   };
 
-  // Update active session and timer
+  // Clear active session when member changes
   useEffect(() => {
-    if (selectedMemberId) {
-      const session = getActiveSession(selectedMemberId);
-      setActiveSession(session);
-      
-      if (session) {
-        const startTime = new Date(session.startTime);
-        const plannedEnd = new Date(startTime.getTime() + session.plannedDuration * 60 * 1000);
-        const now = new Date();
-        const remaining = Math.max(0, Math.floor((plannedEnd.getTime() - now.getTime()) / 1000));
-        setTimeRemaining(remaining);
-      }
+    setActiveSession(null);
+    setTimeRemaining(0);
+    setIsPaused(false);
+  }, [selectedMemberId]);
+
+  // Update active session timer
+  useEffect(() => {
+    if (activeSession) {
+      const startTime = new Date(activeSession.startTime);
+      const plannedEnd = new Date(startTime.getTime() + activeSession.plannedDuration * 60 * 1000);
+      const now = new Date();
+      const remaining = Math.max(0, Math.floor((plannedEnd.getTime() - now.getTime()) / 1000));
+      setTimeRemaining(remaining);
     }
-  }, [selectedMemberId, getActiveSession]);
+  }, [activeSession]);
 
   // Timer countdown
   useEffect(() => {
@@ -140,6 +142,9 @@ const FocusMode: React.FC = () => {
     
     try {
       const sessionId = startFocusSession(selectedMemberId, templateId);
+      const session = getActiveSession(selectedMemberId);
+      setActiveSession(session);
+      
       const template = focusTemplates.find(t => t.id === templateId);
       if (template) {
         setTimeRemaining(template.duration * 60);
