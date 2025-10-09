@@ -165,14 +165,6 @@ const FocusMode: React.FC = () => {
     setShowCompletionDialog(false);
   };
 
-  const handleRestartSession = () => {
-    if (!selectedTemplate) return;
-    
-    // Reset timer to initial duration and pause
-    setTimeRemaining(selectedTemplate.duration * 60);
-    setIsPaused(true);
-  };
-
   const handlePauseSession = () => {
     setIsPaused(!isPaused);
   };
@@ -313,16 +305,6 @@ const FocusMode: React.FC = () => {
               </div>
 
               <div className="max-w-md mx-auto">
-                {/* Activity Name Display */}
-                {selectedTemplate && (
-                  <div className="text-center mb-4">
-                    <div className="inline-flex items-center gap-2 bg-white/80 px-4 py-2 rounded-lg">
-                      <span className="text-2xl">{selectedTemplate.icon}</span>
-                      <h3 className="text-lg font-semibold text-gray-800">{selectedTemplate.name}</h3>
-                    </div>
-                  </div>
-                )}
-                
                 <div className="text-center mb-6">
                   <div className="text-6xl font-mono font-bold text-purple-600 mb-2">
                     {formatTime(timeRemaining)}
@@ -350,13 +332,13 @@ const FocusMode: React.FC = () => {
                     )}
                   </Button>
                   <Button
-                    variant="outline"
-                    onClick={handleRestartSession}
+                    variant="destructive"
+                    onClick={() => handleEndSession(false)}
                     className="flex-1"
-                    data-testid="button-restart-session"
+                    data-testid="button-end-session"
                   >
-                    <Target className="h-4 w-4 mr-2" />
-                    Reiniciar
+                    <Square className="h-4 w-4 mr-2" />
+                    Terminar
                   </Button>
                 </div>
               </div>
@@ -494,12 +476,10 @@ const FocusMode: React.FC = () => {
       <Dialog open={showCompletionDialog} onOpenChange={setShowCompletionDialog}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-center">🎉 Atividade Concluída!</DialogTitle>
+            <DialogTitle className="text-center">🎉 Sessão Concluída!</DialogTitle>
           </DialogHeader>
           <div className="text-center space-y-4">
-            <p className="text-lg font-semibold">
-              {selectedMember?.name} concluiu a atividade de {selectedTemplate?.name}!
-            </p>
+            <p>Parabéns! Você completou sua sessão de foco com sucesso.</p>
             
             <div>
               <label className="text-sm font-medium">Como foi sua produtividade? (1-5)</label>
