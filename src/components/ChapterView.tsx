@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -17,6 +17,11 @@ const ChapterView: React.FC<ChapterViewProps> = ({
   prevChapterId
 }) => {
   const navigate = useNavigate();
+
+  // Scroll to top when chapter changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [chapter.id]);
   const getIconForSectionType = (type?: string) => {
     switch (type) {
       case 'list':

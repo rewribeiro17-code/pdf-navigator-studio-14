@@ -55,6 +55,29 @@ src/
 - **Smart Premium Button**: Shows upsell for free users, dashboard for premium users
 - Protected routes requiring authentication
 
+## Recent Changes (Oct 13, 2025)
+
+### UX Improvements - Chapter Navigation
+- **Auto-scroll to Top**: Fixed chapter navigation to automatically scroll to page top
+  - When clicking "Próximo Capítulo" or "Capítulo Anterior", page now scrolls to beginning
+  - Uses useEffect hook monitoring chapter.id changes
+  - Executes window.scrollTo(0, 0) on every chapter change
+  - Prevents users from seeing middle/end of next chapter before manually scrolling up
+  - Improves reading experience with consistent starting position
+
+### Modo Foco - Timer Behavior Fixes
+- **Fixed Initial State**: Timer now starts paused instead of running immediately
+  - setIsPaused(true) when creating new session
+  - Button shows "Iniciar" on first load (instead of "Pausar")
+  - Prevents accidental time consumption before user is ready
+- **Correct Duration Display**: Fixed bug where timer kept previous activity's duration
+  - Removed useEffect that recalculated time from activeSession
+  - Each activity now shows its correct duration (30 min, 20 min, etc.)
+  - Switching between activities displays accurate time immediately
+- **Simplified Session Behavior**: Sessions no longer auto-restore on page reload
+  - Always shows activity cards when selecting a member
+  - Clean slate approach for better user control
+
 ## Recent Changes (Oct 8, 2025)
 
 ### Authentication System - Password-Based Access
