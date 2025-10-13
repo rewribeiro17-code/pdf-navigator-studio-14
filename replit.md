@@ -57,6 +57,18 @@ src/
 
 ## Recent Changes (Oct 13, 2025)
 
+### Development Experience - Cache Configuration
+- **Smart Cache Control**: Configured cache behavior based on environment
+  - **Development (Replit)**: Cache disabled with no-store headers
+    - Headers: Cache-Control, Pragma, Expires all set to no-cache
+    - Ensures immediate visibility of code changes
+    - Eliminates need for hard refresh during development
+  - **Production (Deploy)**: Normal cache behavior for performance
+    - Optimized load times for end users
+    - Reduced bandwidth consumption
+    - Better user experience with fast page loads
+  - Implementation via custom Vite plugin in development mode only
+
 ### UX Improvements - Chapter Navigation
 - **Auto-scroll to Top**: Fixed chapter navigation to automatically scroll to page top
   - When clicking "Próximo Capítulo" or "Capítulo Anterior", page now scrolls to beginning
