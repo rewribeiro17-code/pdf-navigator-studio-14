@@ -186,7 +186,7 @@ const AppSidebar: React.FC = () => {
                   )}
                 >
                   <Crown className="h-4 w-4" />
-                  <span>✨ PREMIUM ⭐</span>
+                  <span>Premium!</span>
                 </NavLink>
               </SidebarMenuButton>
             </SidebarMenuItem>
