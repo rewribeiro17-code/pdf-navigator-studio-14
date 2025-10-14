@@ -57,12 +57,16 @@ src/
 
 ## Recent Changes (Oct 14, 2025)
 
-### UX Improvements - Focus Mode Navigation
+### UX Improvements - Focus Mode Navigation & Display
 - **Smart Back Button**: Fixed navigation flow in Focus Mode
   - When viewing active session (timer): "Voltar" button returns to activity cards
   - When viewing activity cards: "Voltar ao Dashboard Premium" returns to /premium
   - Conditional logic checks activeSession state to determine behavior
   - Improves user flow: Dashboard → Cards → Session (and back in reverse)
+- **Activity Name Display**: Timer now shows selected activity name and icon
+  - Example: 📚 "Estudo Concentrado" appears above the countdown timer
+  - Visual feedback: Large icon (4xl) + activity name in bold text
+  - Replaces generic "Sessão de Foco Ativa" with specific activity context
 
 ### UX Improvements - Quick Access Navigation  
 - **Family Management Cards**: Fixed navigation from family management page

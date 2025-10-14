@@ -296,7 +296,12 @@ const FocusMode: React.FC = () => {
           {activeSession ? (
             <Card className="p-8 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
               <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold mb-2">Sessão de Foco Ativa</h2>
+                {selectedTemplate && (
+                  <>
+                    <span className="text-4xl mb-2 block">{selectedTemplate.icon}</span>
+                    <h2 className="text-2xl font-bold mb-2">{selectedTemplate.name}</h2>
+                  </>
+                )}
               </div>
 
               <div className="max-w-md mx-auto">
