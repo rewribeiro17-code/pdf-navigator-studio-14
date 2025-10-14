@@ -55,6 +55,22 @@ src/
 - **Smart Premium Button**: Shows upsell for free users, dashboard for premium users
 - Protected routes requiring authentication
 
+## Recent Changes (Oct 14, 2025)
+
+### UX Improvements - Focus Mode Navigation
+- **Smart Back Button**: Fixed navigation flow in Focus Mode
+  - When viewing active session (timer): "Voltar" button returns to activity cards
+  - When viewing activity cards: "Voltar ao Dashboard Premium" returns to /premium
+  - Conditional logic checks activeSession state to determine behavior
+  - Improves user flow: Dashboard → Cards → Session (and back in reverse)
+
+### UX Improvements - Quick Access Navigation  
+- **Family Management Cards**: Fixed navigation from family management page
+  - "Acompanhe o Progresso" card now correctly navigates to Progress Questionnaires
+  - Changed from `/premium/weekly-reports` (old) → `/premium/questionnaires`
+  - Updated button text from "Ver Relatórios" → "Ver Questionários"
+  - Updated description to match questionnaire functionality
+
 ## Recent Changes (Oct 13, 2025)
 
 ### Development Experience - Cache Configuration

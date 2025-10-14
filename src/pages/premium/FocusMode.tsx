@@ -234,11 +234,19 @@ const FocusMode: React.FC = () => {
     <div className="animate-fade-in max-w-6xl mx-auto">
       <Button
         variant="ghost"
-        onClick={() => navigate('/premium')}
+        onClick={() => {
+          if (activeSession) {
+            setActiveSession(null);
+            setTimeRemaining(0);
+            setIsPaused(false);
+          } else {
+            navigate('/premium');
+          }
+        }}
         className="mb-6 hover:bg-primary/10"
       >
         <ArrowLeft className="h-4 w-4 mr-2" />
-        Voltar ao Dashboard Premium
+        {activeSession ? 'Voltar' : 'Voltar ao Dashboard Premium'}
       </Button>
 
       <div className="mb-8">
