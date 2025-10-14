@@ -226,14 +226,14 @@ const FamilyManagement: React.FC = () => {
           <Card className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
             <h3 className="font-bold mb-2">Acompanhe o Progresso</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Veja relatórios semanais detalhados da família
+              Responda questionários e avalie a evolução da família
             </p>
             <Button 
-              onClick={() => navigate('/premium/weekly-reports')}
+              onClick={() => navigate('/premium/questionnaires')}
               className="bg-green-600 hover:bg-green-700"
               data-testid="button-goto-reports"
             >
-              Ver Relatórios
+              Ver Questionários
             </Button>
           </Card>
         </div>
